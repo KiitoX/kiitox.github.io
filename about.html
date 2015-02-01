@@ -3,7 +3,53 @@
 
 <html lang="en">
 <head>
+	<title>About Me</title>
+	
+	<!-- Mobile support -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!--Twitter Bootstrap + Material Design for Bootstrap-->
+    	<link rel="stylesheet" href="css/bootstrap.min.css">
+    	<link rel="stylesheet" href="css/material-wfont.min.css">
+	<link rel="stylesheet" href="css/ripples.min.css">
+	
+	<style type="text/css">
+	</style>
 </head>
 <body>
+<div class="navbar navbar-material-light-green-900 navbar-fixed-top shadow-z-2">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="http://mcmanuellp.github.io/"><!--img src=""-->MCManuelLP</a>
+		</div>
+		<div class="navbar-collapse collapse navbar-responsive-collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="http://mcmanuellp.github.io/">Home</a></li>
+				<li class="dropdown active">
+					<a href="javascript:void(0)" data-target="#" class="dropdown-toggle" data-toggle="dropdown">About Me<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li class="active"><a href="http://mcmanuellp.github.io/about/">About Me</a></li>
+						<li class="dropdown-header">You can stalk me on:</li>
+						<li><a href="http://twitter.com/MCManuelLP">Twitter</a></li>
+						<li><a href="http://github.com/MCManuelLP">GitHub</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>			
+	</div>
+	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/material.min.js"></script>
+	<script src="js/ripples.min.js"></script>
+	<script>$.material.init();</script>
 </body>
 </html>
