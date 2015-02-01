@@ -1,0 +1,14 @@
+	hr {
+	height: 1px;
+	background-color: #ccc;
+	}
+	.module-contents {
+	margin-top: 80px;
+	margin-bottom: 60px;
+	}
+	.featurette-heading {
+	font-weight: 300;
+	line-height: 1;
+	letter-spacing: -1px;
+	text-align:center;
+	}
