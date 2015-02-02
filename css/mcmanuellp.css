@@ -1,6 +1,9 @@
-	hr {
+	.hrcustom {
 	height: 1px;
 	background-color: #ccc;
+	}
+	.justallign {
+	text-align:justify;
 	}
 	.module-contents {
 	margin-top: 80px;
