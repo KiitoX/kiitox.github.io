@@ -1,13 +1,13 @@
 	html,body {
-	height:100% - 60px;
+	height:100%;
 	}
 	.manu {
 	min-width: 400px;
 	}
 	.manuel {
 	height: auto !important; /* real browsers */
-	height: 100% - 60px; /* IE6: treaded as min-height*/
-	min-height: 100% - 60px; /* real browsers */
+	height: 100%; /* IE6: treaded as min-height*/
+	min-height: 100%; /* real browsers */
 	}
 	.hrcustom {
 	height: 1px;
