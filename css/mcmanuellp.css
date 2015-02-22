@@ -2,7 +2,9 @@
 	min-width: 400px;
 	}
 	.manuel {
-	min-height: 100%;
+	height: auto !important; /* real browsers */
+	height: 100%; /* IE6: treaded as min-height*/
+	min-height: 100%; /* real browsers */
 	}
 	.hrcustom {
 	height: 1px;
