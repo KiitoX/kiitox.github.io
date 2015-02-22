@@ -1,16 +1,8 @@
 	html,body {
 	height:100%;
 	}
-	.mcmanu {
-	height: inherit;
-	}
 	.manu {
 	min-width: 400px;
-	}
-	.manuel {
-	height: auto !important; /* real browsers */
-	height: 100%; /* IE6: treaded as min-height*/
-	min-height: 100%; /* real browsers */
 	}
 	.hrcustom {
 	height: 1px;
