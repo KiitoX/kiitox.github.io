@@ -1,6 +1,9 @@
 	.manu {
 	min-width: 400px;
 	}
+	.manuel {
+	min-height: 100%;
+	}
 	.hrcustom {
 	height: 1px;
 	background-color: #ccc;
