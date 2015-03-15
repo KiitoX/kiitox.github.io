@@ -1,9 +1,15 @@
-	html,body {
-	height:100%;
+    html {
+	height: 100%;
 	}
+    body {
+    min-height: 100%;
+    }s
 	.manu {
 	min-width: 400px;
 	}
+    .manuwhole {
+    min-height: calc(100% - 60px);
+    }
 	.hrcustom {
 	height: 1px;
 	background-color: #ccc;
