@@ -9,16 +9,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<!--Twitter Bootstrap + Material Design for Bootstrap-->
-    	<link rel="stylesheet" href="css/bootstrap.min.css">
-    	<link rel="stylesheet" href="css/material-wfont.min.css">
-	<link rel="stylesheet" href="css/ripples.min.css">
-	<link rel="stylesheet" href="css/mcmanuellp.css">
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/material-wfont.min.css">
+	<link rel="stylesheet" href="/css/ripples.min.css">
+	<link rel="stylesheet" href="/css/mcmanuellp.css">
 	
 	<style type="text/css">
 	</style>
 </head>
 <body>
-	<div class="navbar navbar-material-light-green-900 navbar-fixed-top shadow-z-2 manu">
+	<div class="navbar navbar-material-light-green-900 navbar-fixed-top shadow-z-2 width">
 	<div class="container">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
@@ -26,15 +26,22 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="http://mcmanuellp.github.io"><!--img src=""-->MCManuelLP</a>
+			<a class="navbar-brand" href="/index.html"><!--img src=""-->MCManuelLP</a>
 		</div>
 		<div class="navbar-collapse collapse navbar-responsive-collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="http://mcmanuellp.github.io">Home</a></li>
+				<li><a href="/index.html">Home</a></li>
+				<li class="dropdown">
+				    <a href="javascript:void(0)" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Opinion</a>
+				    <ul class="dropdown-menu">
+						<li class="dropdown-header">I have an opinion about:</li>
+				        <li><a href="/o/google.html">Google</a></li>
+				    </ul>
+				</li>
 				<li class="dropdown">
 					<a href="javascript:void(0)" data-target="#" class="dropdown-toggle" data-toggle="dropdown">About Me<b class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li class="active"><a href="#">About Me</a></li>
+						<li class="active"><a href="/about.html">About Me</a></li>
 						<li class="dropdown-header">You can stalk me on:</li>
 						<li><a href="http://twitter.com/MCManuelLP">Twitter</a></li>
 						<li><a href="http://github.com/MCManuelLP">GitHub</a></li>
@@ -55,9 +62,9 @@
 	</div>			
 	</div>
 	
-	<div class="container shadow-z-1 manu">
+	<div class="container shadow-z-1 width">
 	<div class="module-contents">
-		<h2><span class="glyphicon glyphicon-book"></span> About Me</h2>
+		<h2 class="featurette-heading"><span class="glyphicon glyphicon-book"></span> About Me</h2>
 		<p>
 		I programm Java, HTML, Lua, Scala
 		Knowledge reduces from front to back ;)
@@ -81,18 +88,18 @@
 	</div>
 	</div>
 	
-	<footer class="footer shadow-z-1 manu">
+	<footer class="footer shadow-z-1 width">
 	<div class="container text-muted">
 		<p>© 2015 MCManuelLP.<br />This webpage is licensed under the <a href="http://www.wtfpl.net/"><img src="http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-2.png" width="80" height="15" alt="WTFPL" /></a> License.</p>
 	</div>
 	</footer>
 	
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="/js/jquery-1.11.2.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/material.min.js"></script>
-	<script src="js/ripples.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/material.min.js"></script>
+	<script src="/js/ripples.min.js"></script>
 	<script>
 		$.material.init();
 	</script>

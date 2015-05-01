@@ -3,13 +3,10 @@
 	}
     body {
     min-height: 100%;
-    }s
-	.manu {
+    }
+	.width {
 	min-width: 400px;
 	}
-    .manuwhole {
-    min-height: calc(100% - 60px);
-    }
 	.hrcustom {
 	height: 1px;
 	background-color: #ccc;
