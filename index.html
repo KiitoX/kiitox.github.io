@@ -102,7 +102,8 @@
                         </div>
                         <div class="mdl-mini-footer--right-section">
                             <ul class="mdl-mini-footer--link-list">
-                                <li><a href="#">Help</a></li>
+                                <div class="mdl-tooltip" for="1h">There is no such thing!</div>
+                                <li><a href="#" id="1h">Help</a></li>
                             </ul>
                         </div>
                     </footer>
@@ -209,40 +210,95 @@
                                 <p/>
                             </div>
                             
-                            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp" style="margin:5%;width:90%;">
-                                <thead>
-                                    <tr>
-                                        <th class="mdl-data-table__cell--non-numeric" style="width:25%;font-weight:bold;text-align:right;">My Phones:</th>
-                                        <th class="mdl-data-table__cell--non-numeric" style="width:25%;"><img src="./img/p003.jpg" alt="OnePlus One" width="100%"></th>
-                                        <th class="mdl-data-table__cell--non-numeric" style="width:25%;"><img src="./img/p002.jpg" alt="Samsung Galaxy S3 mini" width="100%"></th>
-                                        <th class="mdl-data-table__cell--non-numeric" style="width:25%;"><img src="./img/p001.jpg" alt="Samsung Omnia 2" width="100%"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="mdl-data-table__cell--non-numeric" style="font-weight:bold;text-align:right;">Name:</td>
-                                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;">OnePlus One</td>
-                                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;">Samsung Galaxy S3 mini</td>
-                                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;">Samsung Omnia 2</td>
-                                    </tr>
-                                    <tr>                                            <td class="mdl-data-table__cell--non-numeric" style="font-weight:bold;text-align:right;">Operating System:</td>
-                                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;">Cyanogenmod 12S [5.0.2]</td>
-                                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;">Android KitKat [4.4.4]</td>
-                                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;">Windows Mobile 6.5</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="mdl-data-table__cell--non-numeric" style="font-weight:bold;text-align:right;">Screen Size:</td>
-                                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;">5"</td>
-                                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;">4"</td>
-                                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;">3.7"</td>                                        </tr>
-                                    <tr>
-                                        <td class="mdl-data-table__cell--non-numeric" style="font-weight:bold;text-align:right;">Used:</td>
-                                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;">Since 24.02.2015</td>
-                                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;">~2013 - 24.02.2015</td>
-                                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;">smthng smthng 2011 - 2013</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="mdl-grid" style="margin:5%;">
+                                <div class="mdl-cell mdl-cell--4-col">
+                                    <div class="mdl-card mdl-shadow--2dp" style="width:100%;">
+                                        <table class="mdl-data-table mdl-js-data-table">
+                                            <thead>
+                                                <tr>
+                                                    <th class="mdl-data-table__cell--non-numeric" style="width:100%;"><img src="./img/p003.jpg" alt="OnePlus One" width="100%"></th>
+                                                </tr>
+                                            </thead>
+                                            <div class="mdl-tooltip" for="3n"><strong>Name</strong></div>
+                                            <div class="mdl-tooltip" for="3o"><strong>Operating System</strong></div>
+                                            <div class="mdl-tooltip" for="3s"><strong>Screen Size</strong></div>
+                                            <div class="mdl-tooltip" for="3u"><strong>Used</strong></div>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="3n">OnePlus One</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="3o">Cyanogenmod 12S [5.0.2]</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="3s">5"</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="3u">Since 24.02.2015</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="mdl-cell mdl-cell--4-col">
+                                    <div class="mdl-card mdl-shadow--2dp" style="width:100%;">
+                                        <table class="mdl-data-table mdl-js-data-table">
+                                            <thead>
+                                                <tr>
+                                                    <th class="mdl-data-table__cell--non-numeric" style="width:100%;"><img src="./img/p002.jpg" alt="Samsung Galaxy S3 mini" width="100%"></th>
+                                                </tr>
+                                            </thead>
+                                            <div class="mdl-tooltip" for="2n"><strong>Name</strong></div>
+                                            <div class="mdl-tooltip" for="2o"><strong>Operating System</strong></div>
+                                            <div class="mdl-tooltip" for="2s"><strong>Screen Size</strong></div>
+                                            <div class="mdl-tooltip" for="2u"><strong>Used</strong></div>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="2n">Samsung Galaxy S3 mini</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="2o">Android KitKat [4.4.4]</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="2s">4"</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="2u">Between 07.2013 - 24.02.2015</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="mdl-cell mdl-cell--4-col">
+                                    <div class="mdl-card mdl-shadow--2dp" style="width:100%;">
+                                        <table class="mdl-data-table mdl-js-data-table">
+                                            <thead>
+                                                <tr>
+                                                    <th class="mdl-data-table__cell--non-numeric" style="width:100%;"><img src="./img/p001.jpg" alt="Samsung Omnia 2" width="100%"></th>
+                                                </tr>
+                                            </thead>
+                                            <div class="mdl-tooltip" for="1n"><strong>Name</strong></div>
+                                            <div class="mdl-tooltip" for="1o"><strong>Operating System</strong></div>
+                                            <div class="mdl-tooltip" for="1s"><strong>Screen Size</strong></div>
+                                            <div class="mdl-tooltip" for="1u"><strong>Used</strong></div>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="1n">Samsung Omnia 2</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="1o">Windows Mobile 6.5</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="1s">3.7"</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="1u">Smthng smthng 2011 - 2013</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div> 
+                                </div>
+                            </div>
                             
                         </div>
                     </div>
@@ -256,7 +312,8 @@
                         </div>
                         <div class="mdl-mini-footer--right-section">
                             <ul class="mdl-mini-footer--link-list">
-                                <li><a href="#">Help</a></li>
+                                <div class="mdl-tooltip" for="2h">There is no such thing!</div>
+                                <li><a href="#" id="2h">Help</a></li>
                             </ul>
                         </div>
                     </footer>
@@ -283,7 +340,8 @@
                         </div>
                         <div class="mdl-mini-footer--right-section">
                             <ul class="mdl-mini-footer--link-list">
-                                <li><a href="#">Help</a></li>
+                                <div class="mdl-tooltip" for="3h">There is no such thing!</div>
+                                <li><a href="#" id="3h">Help</a></li>
                             </ul>
                         </div>
                     </footer>
