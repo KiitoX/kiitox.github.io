@@ -36,7 +36,28 @@
             minH -= document.getElementById("s2").offsetHeight;
             document.getElementById("tab").style.minHeight = minH + "px";
         }
+        function noTabActive() {
+            tabs = document.getElementById('ttab').children;
+            for(i = 0; i < tabs.length; i++) {
+                tabs[i].className = "mdl-layout__tab"
+            }
+        }
+        function setURLAdd(id) {
+            window.location.hash = "#"+id;
+        }
+        function startContent() {
+            var pg = window.location.hash.substring(1);
+            if(pg == null || pg.length < 3) pg = 'tab1';
+            if(pg.substr(0, 3) == 'tab') {
+                try {
+                    document.getElementById("t"+pg).className += " is-active";
+                } catch(ex) {}
+            }
+            loadContent(pg);
+        }
         function loadContent(id) {
+            setURLAdd(id);
+            document.getElementById('bar').className = "mdl-layout__drawer";
             document.getElementById('tab').innerHTML="<p style='text-align:center;color:gray;margin:20px;'>Loading ...</p>";
             objXml = new XMLHttpRequest();
             objXml.onreadystatechange = function() {
@@ -44,7 +65,7 @@
                     document.getElementById('tab').innerHTML=objXml.responseText;
                 }
                 if(objXml.readyState == 4 && (objXml.status == 200 || objXml.status == 0) && objXml.response == "") {
-                    document.getElementById('tab').innerHTML="<p style='text-align:center;color:lightcoral;margin:20px;'>Loading failed.</p>";
+                    document.getElementById('tab').innerHTML="<p style='text-align:center;color:lightcoral;margin:20px;'>Couldn't load page content.</p>";
                 }
             }
             objXml.open("GET", './'+id+'.html',true);
@@ -67,7 +88,7 @@
         }
 	</style>
 </head>
-<body onload='loadContent("tab1");expandToWindow();checkChromium();' onresize='expandToWindow();'>
+<body onload='startContent();expandToWindow();checkChromium();' onresize='expandToWindow();'>
     
     <div style="background-color:lightPink;height:24px;width:100%;display:none;" id="noChrome">
         <p style="vertical-align:middle;text-align:center;">
@@ -90,18 +111,18 @@
                 </nav>
             </div>
             <!-- Tabs -->
-            <div class="mdl-layout__tab-bar mdl-js-ripple-effect" style="overflow:hidden;">
-                <a onclick="loadContent('tab1');" href="#home" class="mdl-layout__tab is-active">Home</a>
-                <a onclick="loadContent('tab2');" href="#home" class="mdl-layout__tab">About Me</a>
-                <a onclick="loadContent('tab3');" href="#home" class="mdl-layout__tab">Nifty Internet</a>
+            <div class="mdl-layout__tab-bar mdl-js-ripple-effect" style="overflow:hidden;" id="ttab">
+                <a class="mdl-layout__tab" onclick="loadContent('tab1');" id="ttab1" href="#home">Home</a>
+                <a class="mdl-layout__tab" onclick="loadContent('tab2');" id="ttab2" href="#home">Nifty Internet</a>
             </div>
         </header>
-        <div class="mdl-layout__drawer">
-            <span class="mdl-layout-title">Currently quite WIP</span>
+        <div class="mdl-layout__drawer" id="bar">
+            <span class="mdl-layout-title">My Interests</span>
+            <!-- Sidebar -->
             <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="">(&amp; ugly)</a>
-                <a class="mdl-navigation__link" href="">Link</a>
-                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" onclick="loadContent('bar1');noTabActive();" href="#bar1">Programming</a>
+                <a class="mdl-navigation__link" onclick="loadContent('bar2');noTabActive();" href="#bar2">PC Games</a>
+                <a class="mdl-navigation__link" onclick="loadContent('bar3');noTabActive();" href="#bar3">Movies &amp; TV</a>
             </nav>
         </div>
         
