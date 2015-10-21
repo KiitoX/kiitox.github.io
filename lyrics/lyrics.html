@@ -1,0 +1,9 @@
+<style type="text/css">::-webkit-scrollbar {display: none;} a.click:hover {cursor:pointer;}</style>
+<div class="nav-section-divider"></div>
+<div style="width:inherit;height:24px;font-family:'Roboto', sans-serif">
+    <p style="font-size:17px;margin:0;height:24px;width:inherit;vertical-align:middle;">Lyrics
+    <a class="click" style="font-size:17px;font-weight:900;color:crimson;text-decoration:none;position:relative;left:200" onclick="javascript:(function() {var parentId = 'nav', childId = 'lyrics';document.getElementById(parentId).removeChild(document.getElementById(childId));})();">X</a>
+    <a class="click" style="font-size:17px;font-weight:900;color:crimson;text-decoration:none;position:relative;left:200" onclick="javascript:(function() {var title = document.getElementById('player-song-title').innerHTML, artist = document.getElementById('player-artist').innerHTML;document.getElementById('lyrixdisplay').setAttribute('src', 'https://www.musixmatch.com/search/' + title + ' ' + artist);})();">P</a>
+    </p>
+</div>
+<iframe style="width:inherit;height:360px;" id="lyrixdisplay" src="https://www.musixmatch.com/"></iframe>
