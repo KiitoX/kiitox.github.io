@@ -22,9 +22,11 @@ function init() {
     
     function displayPopup() {
         child.setAttribute('id', childId);// style: position:fixed;bottom:50px;right:0;
-        child.setAttribute('style', 'width:inherit;height:384px;background-color:rgba(255, 255, 255, 1);');
+        child.style.width = 'inherit';
+        child.style.backgroundColor = 'rgba(255, 255, 255, 1)';
         parent.appendChild(child);
         setContent();
+        child.style.height = '397px;';
     }
     
     displayPopup();
