@@ -1,9 +1,37 @@
+<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+<!--/<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>-->
+<script type="text/javascript" src="js/jquery.ajax-cross-origin.min.js"></script>
+<script type="text/javascript">
+    //$.getJSON('http://whateverorigin.org/get?url=' + encodeURIComponent('http://google.com') + '&callback=?', function(data){alert(data.contents);});
+    /*$.ajax({
+        crossOrigin: true,
+        proxy: './proxy.php',
+        url: "https://www.musixmatch.com/lyrics/One-Direction/Home",
+        success: function(data) {
+            alert(data);
+        }
+    });*/
+    $("#invislyr").load("./proxy.php", function(){
+        alert("loaded");
+    });
+    /*$.get('https://www.musixmatch.com/lyrics/One-Direction/Home', function(data){
+        alert(data.contents);
+        var lyricstxt = data.contents.slice(data.contents.search('<span id="lyrics-html"'));
+        alert(lyricstxt);
+        var lyricstxt = lyricstxt.slice(lyricstxt.search('>') + 1);
+        alert(lyricstxt);
+        var lyricstxt = lyricstxt.slice(0, lyricstxt.search('<'));
+        alert(lyricstxt);
+    });*/
+</script>
 <style type="text/css">::-webkit-scrollbar {display: none;} a.click:hover {cursor:pointer;}</style>
+<div style="width:0;height:0;" id="invislyr"></div>
 <div class="nav-section-divider"></div>
 <div style="width:inherit;height:24px;font-family:'Roboto', sans-serif">
     <p style="font-size:17px;margin:0;height:24px;width:inherit;vertical-align:middle;">Lyrics
     <a class="click" style="font-size:17px;font-weight:900;color:crimson;text-decoration:none;position:relative;left:200" onclick="javascript:(function() {var parentId = 'nav', childId = 'lyrics';document.getElementById(parentId).removeChild(document.getElementById(childId));})();">X</a>
-    <a class="click" style="font-size:17px;font-weight:900;color:crimson;text-decoration:none;position:relative;left:200" onclick="javascript:(function() {var title = document.getElementById('player-song-title').innerHTML, artist = document.getElementById('player-artist').innerHTML;document.getElementById('lyrixdisplay').setAttribute('src', 'https://www.musixmatch.com/search/' + title + ' ' + artist);})();">P</a>
+    <a class="click" style="font-size:17px;font-weight:900;color:crimson;text-decoration:none;position:relative;left:200" onclick="javascript:(function() {var title = document.getElementById('player-song-title').innerHTML, artist = document.getElementById('player-artist').innerHTML;document.getElementById('lyrixdisplay').setAttribute('src', 'https://www.musixmatch.com/search/' + title + ' ' + artist);})();">S</a>
+    <a class="click" style="font-size:17px;font-weight:900;color:crimson;text-decoration:none;position:relative;left:200" onclick="javascript:(function() {})();">L</a>
     </p>
-</div>
-<iframe style="width:inherit;height:360px;" id="lyrixdisplay" src="https://www.musixmatch.com/"></iframe>
+</div><!-- https://www.musixmatch.com/ -->
+<iframe style="width:278.75px;height:450px;-ms-zoom: 0.8;-moz-transform: scale(0.8);-moz-transform-origin: 0 0;-o-transform: scale(0.8);-o-transform-origin: 0 0;-webkit-transform: scale(0.8);-webkit-transform-origin: 0 0;" id="lyrixdisplay" src=""></iframe>
