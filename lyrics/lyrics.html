@@ -25,11 +25,11 @@
 <div class="nav-section-header">Lyrics</div>
 <div id="lyrics-section" class="nav-section" alt="Lyrics">
     <a id="lyrics-" class="nav-item-container" href="">
-        <div class="tooltip fade-out" onclick="javascript:(function() {var title = document.getElementById('player-song-title').innerHTML, artist = document.getElementById('player-artist').innerHTML;document.getElementById('lyrixdisplay').setAttribute('src', 'https://www.musixmatch.com/search/' + title + ' ' + artist);})();">Find</div></a>
+        <div class="tooltip fade-out" onclick="javascript:(function() {var title = document.getElementById('player-song-title').innerHTML, artist = document.getElementById('player-artist').innerHTML;document.getElementById('lyrixdisplay').setAttribute('src', 'https://www.musixmatch.com/search/' + title + ' ' + artist + '/tracks');})();">Find</div></a>
     <a id="lyrics-" class="nav-item-container" href="">
-        <div class="tooltip fade-out" onclick="javascript:(function() {})();">Display</div></a>
+        <div class="tooltip fade-out" onclick="javascript:(function() {})();">Display (WIP)</div></a>
     <a id="lyrics-" class="nav-item-container" href="">
-        <div class="tooltip fade-out" onclick="javascript:(function() {var parentId = 'nav', childId = 'lyrics';document.getElementById(parentId).removeChild(document.getElementById(childId));})();">Close</div></a>
+        <div class="tooltip fade-out" onclick="javascript:(function() {removePopup();})();">Close</div></a><!--var parentId = 'nav', childId = 'lyrics';document.getElementById(parentId).removeChild(document.getElementById(childId))-->
 </div>
 <div class="nav-section-divider"></div>
 
