@@ -3,9 +3,7 @@
 <script type="text/javascript">
     function load() {
         alert("loading");
-        $("#invislyr").load("./proxy.php", function(){
-            alert("loaded");
-        });
+        $("#invislyr").load("https://mcmanuellp.github.io/proxy.php #lyrics-html");
     }
 </script-->
 <script type="text/javascript">
@@ -22,7 +20,8 @@
     <a id="lyrics-" class="nav-item-container" href="">
         <div class="tooltip fade-out" onclick="javascript:(function() {var title = document.getElementById('player-song-title').innerHTML, artist = document.getElementById('player-artist').innerHTML;document.getElementById('lyrixdisplay').setAttribute('src', 'https://www.musixmatch.com/search/' + title + ' ' + artist + '/tracks');})();">Find</div></a>
     <a id="lyrics-" class="nav-item-container" href="">
-        <div class="tooltip fade-out" onclick="javascript:(function() {load();})();">Display (WIP)</div></a>
+        <div class="tooltip fade-out" onclick="javascript:(function() {alert('loading');
+        $('#invislyr').load('https://mcmanuellp.github.io/proxy.php #lyrics-html');})();">Display (WIP)</div></a>
     <a id="lyrics-" class="nav-item-container" href="">
         <div class="tooltip fade-out" onclick="javascript:(function() {document.getElementById('nav').removeChild(document.getElementById('lyrics'));})();">Close</div></a>
 </div>
