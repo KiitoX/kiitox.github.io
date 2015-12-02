@@ -1,16 +1,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
 <!--/<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>-->
-<script type="text/javascript" src="js/jquery.ajax-cross-origin.min.js"></script>
+<!--script type="text/javascript" src="js/jquery.ajax-cross-origin.min.js"></script>
 <script type="text/javascript">
-    //$.getJSON('http://whateverorigin.org/get?url=' + encodeURIComponent('http://google.com') + '&callback=?', function(data){alert(data.contents);});
-    /*$.ajax({
-        crossOrigin: true,
-        proxy: './proxy.php',
-        url: "https://www.musixmatch.com/lyrics/One-Direction/Home",
-        success: function(data) {
-            alert(data);
-        }
-    });*/
     $("#invislyr").load("./proxy.php", function(){
         alert("loaded");
     });
@@ -25,11 +16,11 @@
     });*/
 </script>
 
+<!-- hide scrollbar -->
 <style type="text/css">::-webkit-scrollbar {display: none;} a.click:hover {cursor:pointer;}</style>
+<!-- possibly proxy div at some point -->
 <div style="width:0;height:0;" id="invislyr"></div>
-
 <!-- start of html -->
-
 <div class="nav-section-divider"></div>
 <div class="nav-section-header">Lyrics</div>
 <div id="lyrics-section" class="nav-section" alt="Lyrics">
@@ -40,6 +31,7 @@
     <a id="lyrics-" class="nav-item-container" href="">
         <div class="tooltip fade-out" onclick="javascript:(function() {var parentId = 'nav', childId = 'lyrics';document.getElementById(parentId).removeChild(document.getElementById(childId));})();">Close</div></a>
 </div>
+<div class="nav-section-divider"></div>
 
 <div style="max-width:223px;max-height:360px;overflow:hidden;">
     <iframe onload="this.style.height = '450px';" style="border:0;width:278.75px;height:360px;-ms-zoom: 0.8;-moz-transform: scale(0.8);-moz-transform-origin: 0 0;-o-transform: scale(0.8);-o-transform-origin: 0 0;-webkit-transform: scale(0.8);-webkit-transform-origin: 0 0;" id="lyrixdisplay" src="https://www.musixmatch.com/"></iframe>
