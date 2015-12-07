@@ -1,3 +1,5 @@
+var lyricsScript = true;
+
 function init() {
     "use strict";
     var parentId = 'nav', childId = 'lyrics', parent = document.getElementById(parentId), child = document.createElement('div');
@@ -26,7 +28,6 @@ function init() {
         child.style.backgroundColor = 'rgba(255, 255, 255, 1)';
         parent.appendChild(child);
         setContent();
-        child.style.height = '397px;';
     }
     
     displayPopup();
