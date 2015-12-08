@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Mobile support -->
     <meta name="theme-color" content="#3F51B5"><!-- Chrome Android colour -->
     <meta itemprop="image" content="./img/favicon_128x.png">
-    <link rel="shrotcut icon" href="./img/favicon_32x.png">
+    <link rel="shortcut icon" href="./img/favicon_32x.png">
 	<title>MCManuelLP</title><!--Title is variable-->
 	
 	<!-- Material Desing Lite -->
@@ -52,6 +52,15 @@
                 tabs[i].className = "mdl-layout__tab"
             }
         }
+        function setLoading(progress) {
+            var loading = document.getElementById('loading')
+            if(progress == -1 || progress > 100) {
+                loading.style.height = '0';
+            } else {
+                loading.style.height = '4';
+                loading.MaterialProgress.setProgress(progress);
+            }
+        }
         function setURLAdd(id) {
             window.location.hash = "#" + id;
         }
@@ -68,14 +77,18 @@
         function loadContent(id) {
             setURLAdd(id);
             document.getElementById(bar_prefix).className = "mdl-layout__drawer";
-            document.getElementById(content_id).innerHTML="<div class='mdl-spinner mdl-js-spinner is-active'></div><p style='text-align:center;color:gray;margin:20px;'>Loading ...</p>";
+            document.getElementById(content_id).innerHTML="<div class='mdl-progress mdl-js-progress mdl-progress__indeterminate' style='width:100%;'></div><p style='text-align:center;color:gray;margin:20px;'>Loading ...</p>";
             objXml = new XMLHttpRequest();
             objXml.onreadystatechange = function() {
+                setLoading(objXml.readyState * 25);
                 if(objXml.readyState == 4 && (objXml.status == 200 || objXml.status == 0) && objXml.response != "") {
-                    document.getElementById(content_id).innerHTML=objXml.responseText;
-                }
-                if(objXml.readyState == 4 && (objXml.status == 200 || objXml.status == 0) && objXml.response == "") {
-                    document.getElementById(content_id).innerHTML="<p style='text-align:center;color:lightcoral;margin:20px;'>Couldn't load page content.</p>";
+                    if(objXml.response != "") {
+                        document.getElementById(content_id).innerHTML=objXml.responseText;
+                    } else {
+                        document.getElementById(content_id).innerHTML=
+                            "<p style='text-align:center;color:lightcoral;margin:20px;'>Couldn't load page content.</p>";
+                    }
+                    setLoading(-1);
                 }
             }
             objXml.open("GET", './'+id+'.html',true);
@@ -153,10 +166,12 @@
                 <div class="page-content">
                     <div class="mdl-grid">
                         <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
-                        <div class="mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col" style="min-height:10px;" id="content">
+                        <div class="mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col" style="min-height:10px;"><!-- id="content">
                             <!-- Content goes here! -->
-                            <div class="mdl-spinner mdl-js-spinner is-active"></div>
-                            <p style="text-align:center;color:gray;margin:20px;">Loading ...</p>
+                            <div class="mdl-progress mdl-js-progress" id="loading" style="width:100%;"></div>
+                            <div style="width:100%;height:100%;" id="content">
+                                <p style="text-align:center;color:gray;margin:20px;">Loading ...</p>
+                            </div>
                         </div>
                     </div>
                     <footer class="mdl-mini-footer" id="s2">
