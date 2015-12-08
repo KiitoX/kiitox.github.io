@@ -17,7 +17,7 @@
     <!--link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.green-light_green.min.css" /-->
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     
 	<!-- The place for script stuff... -->
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
@@ -25,7 +25,7 @@
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','http://www.google-analytics.com/analytics.js','ga');
+		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 		
   		ga('create', 'UA-66874540-1', 'auto');
   		ga('send', 'pageview');
@@ -33,7 +33,6 @@
     <script>
         var tab_prefix = 'tab';
         var tab_id_prefix = 't';
-        var bar_prefix = 'bar';
         
         var content_id = 'content';
         
@@ -76,9 +75,10 @@
         }
         function loadContent(id) {
             setURLAdd(id);
-            document.getElementById(bar_prefix).className = 'mdl-layout__drawer';
+            document.querySelector('.mdl-layout__drawer').className = 'mdl-layout__drawer';
             document.querySelector('.mdl-layout__obfuscator').className = 'mdl-layout__obfuscator';
-            document.getElementById(content_id).innerHTML="<div class='mdl-progress mdl-js-progress mdl-progress__indeterminate' style='width:100%;'></div><p style='text-align:center;color:gray;margin:20px;'>Loading ...</p>";
+            document.getElementById(content_id).innerHTML=
+                "<div class='mdl-progress mdl-js-progress mdl-progress__indeterminate' style='width:100%;'></div><p style='text-align:center;color:gray;margin:20px;'>Loading ...</p>";
             objXml = new XMLHttpRequest();
             objXml.onreadystatechange = function() {
                 setLoading(objXml.readyState * 25);
@@ -92,7 +92,7 @@
                     setLoading(-1);
                 }
             }
-            objXml.open("GET", './'+id+'.html',true);
+            objXml.open("GET", './pages/'+id+'.html',true);
             objXml.send();
         }
         function checkChromium() {
@@ -127,7 +127,6 @@
      * the default page's file name is a constant in the script above
      * tab ids have to start with var tab_id_prefix + var tab_prefix
      * tab file names have to start with var tab_prefix
-     * bar file names have to start with var bar_prefix
     -->
     
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -144,20 +143,20 @@
             </div>
             <!-- Tabs -->
             <div class="mdl-layout__tab-bar mdl-js-ripple-effect" style="overflow:hidden;" id="ttab">
-                <a class="mdl-layout__tab" onclick="loadContent('tab1');" id="ttab1" href="#home">Home</a>
-                <a class="mdl-layout__tab" onclick="loadContent('tab2');" id="ttab2" href="#home">Nifty Internet</a>
-                <a class="mdl-layout__tab" onclick="loadContent('tab3');" id="ttab3" href="#home">Lyrics</a>
+                <a class="mdl-layout__tab" onclick="loadContent('tab_home');" id="ttab_home" href="#home">Home</a>
+                <a class="mdl-layout__tab" onclick="loadContent('tab_internet');" id="ttab_internet" href="#home">Nifty Internet</a>
+                <a class="mdl-layout__tab" onclick="loadContent('tab_lyrics');" id="ttab_lyrics" href="#home">Lyrics</a>
             </div>
         </header>
-        <div class="mdl-layout__drawer" id="bar">
+        <div class="mdl-layout__drawer">
             <span class="mdl-layout-title">About &amp; around me</span>
             <!-- Sidebar -->
             <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" onclick="noTabActive();loadContent('bar1');" href="#bar1">Programming</a>
-                <a class="mdl-navigation__link" onclick="noTabActive();loadContent('bar2');" href="#bar2">PC Games</a>
-                <a class="mdl-navigation__link" onclick="noTabActive();loadContent('bar3');" href="#bar3">Movies &amp; TV</a>
+                <a class="mdl-navigation__link" onclick="noTabActive();loadContent('programming');" href="#programming">Programming</a>
+                <a class="mdl-navigation__link" onclick="noTabActive();loadContent('pcgames');" href="#pcgames">PC Games</a>
+                <a class="mdl-navigation__link" onclick="noTabActive();loadContent('moviestv');" href="#moviestv">Movies &amp; TV</a>
                 <hr style="width:90%; margin:auto;">
-                <a class="mdl-navigation__link" onclick="noTabActive();loadContent('bar4');" href="#bar4">Hardware</a>
+                <a class="mdl-navigation__link" onclick="noTabActive();loadContent('hardware');" href="#hardware">Hardware</a>
             </nav>
         </div>
         

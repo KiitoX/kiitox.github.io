@@ -1,0 +1,12 @@
+<h3 style="font-weight:300;text-align:center;">Lyrics</h3>
+<hr style="width:90%; margin:auto;">
+<div style="margin:5%;">
+    <p style="text-align:justify;">
+        Page for my small google play music lyrics bookmarklet<br>
+        (lyrics from musixmatch.com)<br>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+        <a href="javascript:(function(){if (typeof window.lyricsScript === 'undefined') {var script=document.createElement('script');script.setAttribute('id','lyricsScript');script.setAttribute('type','text/javascript');script.setAttribute('charset','UTF-8');script.setAttribute('async','true');script.setAttribute('src','https://mcmanuellp.github.io/lyrics/lyricscrawler.js');document.documentElement.appendChild(script);script.onload=script.onreadystatechange=function(){var rs=script.readyState;if(!rs || rs==='loaded' || rs==='complete'){script.onload=script.onreadystatechange=null;init();}};} else {init();}})();" style="color:inherit;text-decoration:inherit;">Google Play Lyrics</a>
+        </button><br>
+        Just drag it to your Bookmarks bar.
+    </p>
+</div>
