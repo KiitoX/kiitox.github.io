@@ -11,11 +11,12 @@ function init() {
     function setContent() {
         var objXml = new XMLHttpRequest();
         objXml.onreadystatechange = function () {
-            if (objXml.readyState === 4 && (objXml.status === 200 || objXml.status === 0) && objXml.response !== "") {
-                child.innerHTML = objXml.responseText;
-            }
-            if (objXml.readyState === 4 && (objXml.status === 200 || objXml.status === 0) && objXml.response === "") {
-                child.innerHTML = "<p style='text-align:center;color:lightcoral;margin:20px;'>Couldn't load page content.</p>";
+            if (objXml.readyState === 4 && (objXml.status === 200 || objXml.status === 0)) {
+                if(objXml.response !== "") {
+                    child.innerHTML = objXml.responseText;
+                } else {
+                    child.innerHTML = "<p style='text-align:center;color:lightcoral;margin:20px;'>Couldn't load page content.</p>";
+                }
             }
         };
         objXml.open("GET", 'https://mcmanuellp.github.io/lyrics/lyrics.html', true);

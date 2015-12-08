@@ -79,11 +79,11 @@
             document.querySelector('.mdl-layout__obfuscator').className = 'mdl-layout__obfuscator';
             document.getElementById(content_id).innerHTML=
                 "<div class='mdl-progress mdl-js-progress mdl-progress__indeterminate' style='width:100%;'></div><p style='text-align:center;color:gray;margin:20px;'>Loading ...</p>";
-            objXml = new XMLHttpRequest();
+            var objXml = new XMLHttpRequest();
             objXml.onreadystatechange = function() {
                 setLoading(objXml.readyState * 25);
-                if(objXml.readyState == 4 && (objXml.status == 200 || objXml.status == 0) && objXml.response != "") {
-                    if(objXml.response != "") {
+                if(objXml.readyState === 4 && (objXml.status === 200 || objXml.status === 0)) {
+                    if(objXml.response !== "") {
                         document.getElementById(content_id).innerHTML=objXml.responseText;
                     } else {
                         document.getElementById(content_id).innerHTML=
@@ -93,6 +93,21 @@
                 }
             }
             objXml.open("GET", './pages/'+id+'.html',true);
+            objXml.send();
+        }
+        function setLink() {
+            var objXml = new XMLHttpRequest();
+            objXml.onreadystatechange = function() {
+                setLoading(objXml.readyState * 25);
+                if(objXml.readyState === 4 && (objXml.status === 200 || objXml.status === 0)) {
+                    if(objXml.response !== '') {
+                        document.getElementById('bookmarklet').href = 'javascript:(function(){' + objXml.responseText +  '})();';
+                    } else {
+                        document.getElementById('bookmarklet').innerHTML='Couldn&#39;t load bookmarklet &#59;&#40;';
+                    }
+                }
+            }
+            objXml.open('GET', './lyrics/js-bookmark-applet.js', true);
             objXml.send();
         }
         function checkChromium() {
