@@ -118,6 +118,9 @@
         function hideCMessage() {
             document.getElementById("noChrome").style.display="none";
         }
+        window.addEventListener("hashchange", function(e) {
+            loadContent(window.location.hash.substring(1));
+        })
     </script>
     
     <!-- Custom stuff, if necessary -->
