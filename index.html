@@ -41,9 +41,9 @@
         function expandToWindow() {
             var minH = window.innerHeight;
             minH -= document.getElementById("s1").offsetHeight;
-            minH -= 32 //never changin padding and margin of content block
+            minH -= 32 /*top and bottom margin of content block*/;
             minH -= document.getElementById("s2").offsetHeight;
-            document.getElementById(content_id).style.minHeight = minH + "px";
+            document.getElementById(content_id + '_').style.minHeight = minH + "px";
         }
         function noTabActive() {
             tabs = document.getElementById(tab_id_prefix + tab_prefix).children;
@@ -73,10 +73,18 @@
             }
             loadContent(pg);
         }
+        function setDrawer(bool) {
+            if (bool) {
+                document.querySelector('.mdl-layout__drawer').className = 'mdl-layout__drawer is-visible';
+                document.querySelector('.mdl-layout__obfuscator').className = 'mdl-layout__obfuscator is-visible';
+            } else {
+                document.querySelector('.mdl-layout__drawer').className = 'mdl-layout__drawer';
+                document.querySelector('.mdl-layout__obfuscator').className = 'mdl-layout__obfuscator';
+            }
+        }
         function loadContent(id) {
             setURLAdd(id);
-            document.querySelector('.mdl-layout__drawer').className = 'mdl-layout__drawer';
-            document.querySelector('.mdl-layout__obfuscator').className = 'mdl-layout__obfuscator';
+            setDrawer(false);
             document.getElementById(content_id).innerHTML=
                 "<div class='mdl-progress mdl-js-progress mdl-progress__indeterminate' style='width:100%;'></div><p style='text-align:center;color:gray;margin:20px;'>Loading ...</p>";
             var objXml = new XMLHttpRequest();
@@ -95,6 +103,9 @@
             objXml.open("GET", './pages/'+id+'.html',true);
             objXml.send();
         }
+        window.addEventListener('hashchange', function() {
+            loadContent(window.location.hash.substring(1));
+        })
         function setLink() {
             var objXml = new XMLHttpRequest();
             objXml.onreadystatechange = function() {
@@ -118,8 +129,51 @@
         function hideCMessage() {
             document.getElementById("noChrome").style.display="none";
         }
-        window.addEventListener("hashchange", function(e) {
-            loadContent(window.location.hash.substring(1));
+        function addDrawerSwipe(element, bool) {
+            var startX,
+                startY,
+                dist,
+                threshold = 100, //required min distance to be considered swipe
+                restraint = 80, // mav vertical distance
+                allowedTime = 200, // max time allowed to travel that distance
+                elapsedTime,
+                startTime;
+            
+            function handleswipe(isrightswipe) {
+                if (isrightswipe) {
+                    setDrawer(bool);
+                }
+            }
+            
+            element.addEventListener('touchstart', function(e) {
+                var touchobj = e.changedTouches[0];
+                dist = 0;
+                startX = touchobj.pageX;
+                startY = touchobj.pageY;
+                startTime = new Date().getTime();
+            }, false);
+            
+            element.addEventListener('touchend', function(e) {
+                var touchobj = e.changedTouches[0];
+                dist = touchobj.pageX - startX;
+                elapsedTime = new Date().getTime() - startTime;
+                if (bool) {
+                    var swiperightBol = (elapsedTime <= allowedTime && dist >= threshold && Math.abs(touchobj.pageY - startY) <= restraint);
+                } else {
+                    var swiperightBol = (elapsedTime <= allowedTime && dist <= -threshold && Math.abs(touchobj.pageY - startY) <= restraint);
+                }
+                handleswipe(swiperightBol);
+                if (swiperightBol) e.preventDefault();
+            }, false);
+        }
+        window.addEventListener('load', function() {
+            var touchsurface1 = document.getElementById('swipeable1'),
+                touchsurface2 = document.getElementById('swipeable2'),
+                touchsurface3 = document.querySelector('.mdl-layout__obfuscator');
+            
+            addDrawerSwipe(touchsurface1, true);
+            addDrawerSwipe(touchsurface2, false);
+            addDrawerSwipe(touchsurface3, false);
         })
     </script>
     
@@ -167,7 +221,7 @@
                 <a class="mdl-layout__tab" onclick="loadContent('tab_lyrics');" id="ttab_lyrics" href="#home">Lyrics</a>
             </div>
         </header>
-        <div class="mdl-layout__drawer">
+        <div class="mdl-layout__drawer" id="swipeable2">
             <span class="mdl-layout-title">About &amp; around me</span>
             <!-- Sidebar -->
             <nav class="mdl-navigation">
@@ -179,16 +233,16 @@
             </nav>
         </div>
         
-        <main class="mdl-layout__content" style="background-color:lightsteelblue">
+        <main class="mdl-layout__content" id="swipeable1" style="background-color:lightsteelblue">
             
             <section class="mdl-layout__tab-panel is-active" id="home">
                 <div class="page-content">
                     <div class="mdl-grid">
                         <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
-                        <div class="mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col" style="min-height:10px;"><!-- id="content">
-                            <!-- Content goes here! -->
+                        <div class="mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col" style="min-height:10px;" id="content_">
                             <div class="mdl-progress mdl-js-progress" id="loading" style="width:100%;"></div>
                             <div style="width:100%;height:100%;" id="content">
+                                <!-- Content goes here! -->
                                 <p style="text-align:center;color:gray;margin:20px;">Loading ...</p>
                             </div>
                         </div>
