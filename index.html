@@ -21,161 +21,8 @@
     
 	<!-- The place for script stuff... -->
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
-    <script>
-		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-		})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-		
-  		ga('create', 'UA-66874540-1', 'auto');
-  		ga('send', 'pageview');
-	</script>
-    <script>
-        var tab_prefix = 'tab';
-        var tab_id_prefix = 't';
-        
-        var content_id = 'content';
-        
-        var default_page = 'tab_home';
-        
-        function expandToWindow() {
-            var minH = window.innerHeight;
-            minH -= document.getElementById("s1").offsetHeight;
-            minH -= 32 /*top and bottom margin of content block*/;
-            minH -= document.getElementById("s2").offsetHeight;
-            document.getElementById(content_id + '_').style.minHeight = minH + "px";
-        }
-        function noTabActive() {
-            tabs = document.getElementById(tab_id_prefix + tab_prefix).children;
-            for(i = 0; i < tabs.length; i++) {
-                tabs[i].className = "mdl-layout__tab"
-            }
-        }
-        function setLoading(progress) {
-            var loading = document.getElementById('loading')
-            if(progress == -1 || progress > 100) {
-                loading.style.height = '0';
-            } else {
-                loading.style.height = '4';
-                loading.MaterialProgress.setProgress(progress);
-            }
-        }
-        function setURLAdd(id) {
-            window.location.hash = "#" + id;
-        }
-        function startContent() {
-            var pg = window.location.hash.substring(1);
-            if(pg == null || pg == 'home' || pg.length < 3) pg = default_page;
-            if(pg.substr(0, 3) == tab_prefix) {
-                try {
-                    document.getElementById("t" + pg).className += " is-active";
-                } catch(ex) {}
-            }
-            loadContent(pg);
-        }
-        function setDrawer(bool) {
-            if (bool) {
-                document.querySelector('.mdl-layout__drawer').className = 'mdl-layout__drawer is-visible';
-                document.querySelector('.mdl-layout__obfuscator').className = 'mdl-layout__obfuscator is-visible';
-            } else {
-                document.querySelector('.mdl-layout__drawer').className = 'mdl-layout__drawer';
-                document.querySelector('.mdl-layout__obfuscator').className = 'mdl-layout__obfuscator';
-            }
-        }
-        function loadContent(id) {
-            setURLAdd(id);
-            setDrawer(false);
-            document.getElementById(content_id).innerHTML=
-                "<div class='mdl-progress mdl-js-progress mdl-progress__indeterminate' style='width:100%;'></div><p style='text-align:center;color:gray;margin:20px;'>Loading ...</p>";
-            var objXml = new XMLHttpRequest();
-            objXml.onreadystatechange = function() {
-                setLoading(objXml.readyState * 25);
-                if(objXml.readyState === 4 && (objXml.status === 200 || objXml.status === 0)) {
-                    if(objXml.response !== "") {
-                        document.getElementById(content_id).innerHTML=objXml.responseText;
-                    } else {
-                        document.getElementById(content_id).innerHTML=
-                            "<p style='text-align:center;color:lightcoral;margin:20px;'>Couldn't load page content.</p>";
-                    }
-                    setLoading(-1);
-                }
-            }
-            objXml.open("GET", './pages/'+id+'.html',true);
-            objXml.send();
-        }
-        window.addEventListener('hashchange', function() {
-            loadContent(window.location.hash.substring(1));
-        })
-        function setLink() {
-            var objXml = new XMLHttpRequest();
-            objXml.onreadystatechange = function() {
-                setLoading(objXml.readyState * 25);
-                if(objXml.readyState === 4 && (objXml.status === 200 || objXml.status === 0)) {
-                    if(objXml.response !== '') {
-                        document.getElementById('bookmarklet').href = 'javascript:(function(){' + objXml.responseText +  '})();';
-                    } else {
-                        document.getElementById('bookmarklet').innerHTML='Couldn&#39;t load bookmarklet &#59;&#40;';
-                    }
-                }
-            }
-            objXml.open('GET', './lyrics/js-bookmark-applet.js', true);
-            objXml.send();
-        }
-        function checkChromium() {
-            if(!window.chrome) {
-                document.getElementById("noChrome").style.display="block";
-            }
-        }
-        function hideCMessage() {
-            document.getElementById("noChrome").style.display="none";
-        }
-        function addDrawerSwipe(element, bool) {
-            var startX,
-                startY,
-                dist,
-                threshold = 100, //required min distance to be considered swipe
-                restraint = 80, // mav vertical distance
-                allowedTime = 200, // max time allowed to travel that distance
-                elapsedTime,
-                startTime;
-            
-            function handleswipe(isrightswipe) {
-                if (isrightswipe) {
-                    setDrawer(bool);
-                }
-            }
-            
-            element.addEventListener('touchstart', function(e) {
-                var touchobj = e.changedTouches[0];
-                dist = 0;
-                startX = touchobj.pageX;
-                startY = touchobj.pageY;
-                startTime = new Date().getTime();
-            }, false);
-            
-            element.addEventListener('touchend', function(e) {
-                var touchobj = e.changedTouches[0];
-                dist = touchobj.pageX - startX;
-                elapsedTime = new Date().getTime() - startTime;
-                if (bool) {
-                    var swiperightBol = (elapsedTime <= allowedTime && dist >= threshold && Math.abs(touchobj.pageY - startY) <= restraint);
-                } else {
-                    var swiperightBol = (elapsedTime <= allowedTime && dist <= -threshold && Math.abs(touchobj.pageY - startY) <= restraint);
-                }
-                handleswipe(swiperightBol);
-                if (swiperightBol) e.preventDefault();
-            }, false);
-        }
-        window.addEventListener('load', function() {
-            var touchsurface1 = document.getElementById('swipeable1'),
-                touchsurface2 = document.getElementById('swipeable2'),
-                touchsurface3 = document.querySelector('.mdl-layout__obfuscator');
-            
-            addDrawerSwipe(touchsurface1, true);
-            addDrawerSwipe(touchsurface2, false);
-            addDrawerSwipe(touchsurface3, false);
-        })
-    </script>
+    <script src="js/analytics.js"></script>
+    <script src="js/mcmanuellp.js"></script>
     
     <!-- Custom stuff, if necessary -->
 	<style type="text/css">
@@ -184,7 +31,7 @@
         }
 	</style>
 </head>
-<body onload='startContent();expandToWindow();checkChromium();' onresize='expandToWindow();'>
+<body onresize='expandToWindow();'>
     
     <div style="background-color:lightPink;height:24px;width:100%;display:none;" id="noChrome">
         <p style="vertical-align:middle;text-align:center;">
@@ -196,7 +43,7 @@
     
     <!--
     A few page naming rules:
-     * the default page's file name is a constant in the script above
+     * the default page's file name is a constant in the script 'js/mcmanuellp.js'
      * tab ids have to start with var tab_id_prefix + var tab_prefix
      * tab file names have to start with var tab_prefix
      * tab href must be '#home' (id of section .mdl-layout__tab-panel)
@@ -216,20 +63,20 @@
             </div>
             <!-- Tabs -->
             <div class="mdl-layout__tab-bar mdl-js-ripple-effect" style="overflow:hidden;" id="ttab">
-                <a class="mdl-layout__tab" onclick="loadContent('tab_home');" id="ttab_home" href="#home">Home</a>
-                <a class="mdl-layout__tab" onclick="loadContent('tab_internet');" id="ttab_internet" href="#home">Nifty Internet</a>
-                <a class="mdl-layout__tab" onclick="loadContent('tab_lyrics');" id="ttab_lyrics" href="#home">Lyrics</a>
+                <a class="mdl-layout__tab" onclick="goTo('tab_home');" id="ttab_home" href="#home">Home</a>
+                <a class="mdl-layout__tab" onclick="goTo('tab_internet');" id="ttab_internet" href="#home">Nifty Internet</a>
+                <a class="mdl-layout__tab" onclick="goTo('tab_lyrics');" id="ttab_lyrics" href="#home">Lyrics</a>
             </div>
         </header>
         <div class="mdl-layout__drawer" id="swipeable2">
             <span class="mdl-layout-title">About &amp; around me</span>
             <!-- Sidebar -->
             <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" onclick="noTabActive();loadContent('programming');" href="#programming">Programming</a>
-                <a class="mdl-navigation__link" onclick="noTabActive();loadContent('pcgames');" href="#pcgames">PC Games</a>
-                <a class="mdl-navigation__link" onclick="noTabActive();loadContent('moviestv');" href="#moviestv">Movies &amp; TV</a>
+                <a class="mdl-navigation__link" onclick="noTabActive();goTo('programming');" href="#programming">Programming</a>
+                <a class="mdl-navigation__link" onclick="noTabActive();goTo('pcgames');" href="#pcgames">PC Games</a>
+                <a class="mdl-navigation__link" onclick="noTabActive();goTo('moviestv');" href="#moviestv">Movies &amp; TV</a>
                 <hr style="width:90%; margin:auto;">
-                <a class="mdl-navigation__link" onclick="noTabActive();loadContent('hardware');" href="#hardware">Hardware</a>
+                <a class="mdl-navigation__link" onclick="noTabActive();goTo('hardware');" href="#hardware">Hardware</a>
             </nav>
         </div>
         
