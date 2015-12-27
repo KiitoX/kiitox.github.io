@@ -9,6 +9,9 @@ if (typeof window.lyricsScript === 'undefined') {
         var rs = script.readyState;
         if (!rs || rs === 'loaded' || rs === 'complete') {
             script.onload = script.onreadystatechange = null;
+            lyricsScript('https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js');
+            lyricsScript('js/jquery.ajax-cross-origin.min.js');
+            /*lyricsScript('https://raw.githubusercontent.com/padolsey-archive/jquery.fn/master/cross-domain-ajax/jquery.xdomainajax.js');*/
             init();
         }
     };
