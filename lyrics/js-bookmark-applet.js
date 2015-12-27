@@ -10,8 +10,9 @@ if (typeof window.lyricsScript === 'undefined') {
         if (!rs || rs === 'loaded' || rs === 'complete') {
             script.onload = script.onreadystatechange = null;
             lyricsScript('https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js');
-            lyricsScript('js/jquery.ajax-cross-origin.min.js');
-            /*lyricsScript('https://raw.githubusercontent.com/padolsey-archive/jquery.fn/master/cross-domain-ajax/jquery.xdomainajax.js');*/
+            lyricsScript('https://raw.githubusercontent.com/padolsey-archive/jquery.fn/master/cross-domain-ajax/jquery.xdomainajax.js');
+            /*lyricsScript('js/jquery.ajax-cross-origin.min.js');*/
+            lyricsScript('lyricsjquery.js')
             init();
         }
     };
