@@ -44,7 +44,9 @@ function lyricsFind() {
 
 function lyricsLoad() {
     alert("loading");
-    $("#invislyr").load("https://mcmanuellp.github.io/lyrics/temp.html");
+    $("#invislyr").load(document.getElementById('lyrixdisplay').getAttribute('src'));
+    document.getElementById('lyrics-html').fontSize = '0.8em';
+    alert(document.getElementById('lyrics-html').innerHtml)
 };
 
 function lyricsClose() {
