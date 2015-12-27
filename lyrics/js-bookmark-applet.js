@@ -3,7 +3,7 @@ if (typeof window.lyricsScript === 'undefined') {
         scriptUrls = ['https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js',
                     /*'js/jquery.ajax-cross-origin.min.js'),*/
                       'https://raw.githubusercontent.com/padolsey-archive/jquery.fn/master/cross-domain-ajax/jquery.xdomainajax.js',
-                      'https://mcmanuellp.github.io/lyrics/lyricscrawler.js'];//has to be last...
+                      'https://mcmanuellp.github.io/lyrics/lyricscrawler.js'];/*has to be last...*/
     for (i = 0; i < scriptUrls.length; i++) {
         script = document.createElement('script');
         script.setAttribute('type', 'text/javascript');
