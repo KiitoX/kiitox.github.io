@@ -4,9 +4,6 @@ function init() {
     "use strict";
     var parentId = 'nav', childId = 'lyrics', parent = document.getElementById(parentId), child = document.createElement('div');
     
-    lyricsScript('https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js');
-    lyricsScript('js/jquery.ajax-cross-origin.min.js');
-    //lyricsScript('https://raw.githubusercontent.com/padolsey-archive/jquery.fn/master/cross-domain-ajax/jquery.xdomainajax.js');
     displayPopup();
 }
 
