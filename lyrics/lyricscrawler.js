@@ -1,9 +1,10 @@
-var lyricsScript = true;
+var lyricsScript = true,
+    parentId = 'nav',
+    childId = 'lyrics',
+    parent = document.getElementById(parentId),
+    child = document.createElement('div');
 
 function init() {
-    "use strict";
-    var parentId = 'nav', childId = 'lyrics', parent = document.getElementById(parentId), child = document.createElement('div');
-    
     displayPopup();
 }
 
