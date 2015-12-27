@@ -34,7 +34,7 @@ function init() {
     displayPopup();
 }
 
-function find() {
+function lyricsFind() {
     var titleId = 'currently-playing-title',
         artistId = 'player-artist',
         title = document.getElementById(titleId).innerHTML,
@@ -42,11 +42,11 @@ function find() {
     document.getElementById('lyrixdisplay').setAttribute('src', 'https://www.musixmatch.com/search/' + title + ' ' + artist + '/tracks');
 }
 
-function load() {
+function lyricsLoad() {
     alert("loading");
     $("#invislyr").load("https://mcmanuellp.github.io/lyrics/temp.html");
 };
 
-function close() {
+function lyricsClose() {
     document.getElementById('nav').removeChild(document.getElementById('lyrics'));
 }
