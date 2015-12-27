@@ -11,8 +11,8 @@ function init() {
     function setContent() {
         var objXml = new XMLHttpRequest();
         objXml.onreadystatechange = function () {
-            if (objXml.readyState === 4 && (objXml.status === 200 || objXml.status === 0)) {
-                if(objXml.response !== "") {
+            if (objXml.readyState === 4) {
+                if(objXml.status === 200) {
                     child.innerHTML = objXml.responseText;
                 } else {
                     child.innerHTML = "<p style='text-align:center;color:lightcoral;margin:20px;'>Couldn't load page content.</p>";
