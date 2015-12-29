@@ -42,7 +42,7 @@ function setDrawer(bool) {
 }
 //loads subpage id.html
 function loadContent(id) {
-    var loading = "<p style='text-align:center;color:gray;margin:20px;'>Loading ...</p>",
+    var loading = document.getElementById("_loading").innerHTML,
         error0  = "<p style='text-align:center;color:lightcoral;margin:20px;'>Couldn't load page content.<br>ERROR: ",
         error1  = "</p>",
         objXml = new XMLHttpRequest();
