@@ -162,3 +162,7 @@ window.addEventListener('load', function () {
     addDrawerSwipe(touchsurface2, false);
     addDrawerSwipe(touchsurface3, false);
 });
+//assemble full static webpage
+function assemble() {
+    alert('hey');
+}
