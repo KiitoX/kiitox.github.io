@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en" class="mdl-js" hola_ext_inject="disabled"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="My web appearance, made with sweat and tears.">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Mobile support -->
+    <meta name="theme-color" content="#3F51B5"><!-- Chrome Android colour -->
+    <meta itemprop="image" content="./img/favicon_128x.png">
+    <link rel="shortcut icon" href="./img/favicon_32x.png">
+	<title>MCManuelLP</title><!--Title is variable-->
+	
+	<!-- Material Desing Lite -->
+    <!--link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.blue_grey-deep_orange.min.css" /--> 
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+    <!--link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.green-light_green.min.css" /-->
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    
+	<!-- The place for script stuff... -->
+    <script async="" src="https://www.google-analytics.com/analytics.js"></script><script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script><style>#content > #right > .dose > .dosesingle,
+#content > #center > .dose > .dosesingle
+{display:none !important;}</style>
+    <script src="js/analytics.js"></script>
+    <script src="js/mcmanuellp.js"></script>
+    </head><body onresize="expandToWindow();"><div id="no_assemble"></div>
+    
+    <!-- Custom stuff, if necessary -->
+	<style type="text/css">
+    	::-webkit-scrollbar {
+            display: none;
+        }
+	</style>
+
+
+    
+    <div style="background-color:lightPink;height:24px;width:100%;display:none;" id="noChrome">
+        <p style="vertical-align:middle;text-align:center;">
+            <i class="material-icons md-18" href="#" style="vertical-align:middle;text-align:center;" onclick="hideCMessage();" id="err" tabindex="0">close</i>
+            For full compatibility (&amp; beauty) I encurage the use of a Webkit supported Browser e.g. Google Chrome, Microsoft Edge, Safari, Opera 15+...
+        </p>
+        <div class="mdl-tooltip" for="err" data-upgraded=",MaterialTooltip">Close</div>
+    </div>
+    
+    <!--
+    A few page naming rules:
+     * the default page's file name is a constant in the script 'js/mcmanuellp.js'
+     * tab ids have to start with var tab_id_prefix + var tab_prefix
+     * tab file names have to start with var tab_prefix
+     * tab href must be '#home' (id of section .mdl-layout__tab-panel)
+    -->
+    
+    <div class="mdl-layout__container"><div class="mdl-layout mdl-js-layout mdl-layout--fixed-header has-drawer is-small-screen has-tabs is-upgraded" data-upgraded=",MaterialLayout">
+        <header class="mdl-layout__header is-casting-shadow" id="s1"><div class="mdl-layout__drawer-button"><i class="material-icons">menu</i></div>
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">MCManuelLP</span>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation"></nav>
+            </div>
+            <!-- Tabs -->
+            <div class="mdl-layout__tab-bar-container"><div class="mdl-layout__tab-bar-button mdl-layout__tab-bar-left-button"><i class="material-icons">chevron_left</i></div><div class="mdl-layout__tab-bar mdl-js-ripple-effect is-casting-shadow mdl-js-ripple-effect--ignore-events" style="overflow:hidden;" id="ttab" data-upgraded=",MaterialRipple">
+                <a class="mdl-layout__tab" id="ttab_home" href="https://mcmanuellp.github.io/tab_home">Home<span class="mdl-layout__tab-ripple-container mdl-js-ripple-effect" data-upgraded=",MaterialRipple"><span class="mdl-ripple"></span></span></a>
+                <a class="mdl-layout__tab" id="ttab_internet" href="https://mcmanuellp.github.io/tab_internet">Nifty Internet<span class="mdl-layout__tab-ripple-container mdl-js-ripple-effect" data-upgraded=",MaterialRipple"><span class="mdl-ripple"></span></span></a>
+                <a class="mdl-layout__tab" id="ttab_lyrics" href="https://mcmanuellp.github.io/tab_lyrics">Lyrics<span class="mdl-layout__tab-ripple-container mdl-js-ripple-effect" data-upgraded=",MaterialRipple"><span class="mdl-ripple"></span></span></a>
+            </div><div class="mdl-layout__tab-bar-button mdl-layout__tab-bar-right-button"><i class="material-icons">chevron_right</i></div></div>
+        </header>
+        <div class="mdl-layout__drawer" id="swipeable2">
+            <span class="mdl-layout-title">About &amp; around me</span>
+            <!-- Sidebar -->
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="https://mcmanuellp.github.io/programming">Programming</a>
+                <a class="mdl-navigation__link" href="https://mcmanuellp.github.io/pcgames">PC Games</a>
+                <a class="mdl-navigation__link" href="https://mcmanuellp.github.io/moviestv">Movies &amp; TV</a>
+                <hr style="width:90%; margin:auto;">
+                <a class="mdl-navigation__link" href="https://mcmanuellp.github.io/hardware">Hardware</a>
+            </nav>
+        </div>
+        
+        <main class="mdl-layout__content" id="swipeable1" style="background-color:lightsteelblue">
+            
+            <section class="mdl-layout__tab-panel is-active" id="home">
+                <div class="page-content">
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+                        <div class="mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col" id="content_" style="min-height: 259px;">
+                            <!-- Reference HTML -->
+                            <div style="display:none;" id="_loading"><p style="text-align:center;color:gray;margin:20px;">Loading ...</p></div>
+                            <div style="display:none;" id="_error"></div><!-- todo do? -->
+                            <!-- Loading progress bar. -->
+                            <div style="height:4px;"><div class="mdl-progress mdl-js-progress is-upgraded" id="loading" style="width: 100%; height: 0px;" data-upgraded=",MaterialProgress"><div class="progressbar bar bar1" style="width: 0%;"></div><div class="bufferbar bar bar2" style="width: 100%;"></div><div class="auxbar bar bar3" style="width: 0%;"></div></div></div>
+                            <!-- Content goes in here! -->
+                            <div style="width:100%;height:100%;" id="content"><h3 style="font-weight:300;text-align:center;">Hardware</h3>
+<hr style="width:90%; margin:auto;">
+<div style="margin:5%">
+    <p>
+        Samsung NP355V5C-S0C Notebook:<br>
+        ·Current OS: ubuntu 15.04 &amp; Windows 10<br>
+        ·AMD Quad-Core A8-4500M 1.90 x64<br>
+        ·Radeon HD 7640G 2048MB<br>
+        ·15.6" 1366 x 768 HD LED<br>
+        ·8GB DDR3 RAM (1600 MHz)<br>
+        ·1.000 GB SATA HDD<br>
+        ·Currently maybe broken DVD-ROM Drive(who needs these anyways?)
+    </p><p>
+</p></div>
+                        
+<div class="mdl-grid" style="margin:0%;">
+	<div class="mdl-cell mdl-cell--6-col">
+        <div class="mdl-card mdl-shadow--2dp" style="width:100%;">
+            <div class="mdl-tooltip" for="4n"><strong>Name</strong></div><div class="mdl-tooltip" for="4o"><strong>Operating System</strong></div><div class="mdl-tooltip" for="4s"><strong>Screen Size</strong></div><div class="mdl-tooltip" for="4u"><strong>Used</strong></div><table class="mdl-data-table mdl-js-data-table">
+                <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric" style="width:100%;"><img src="./img/p004.jpg" alt="OnePlus Two" width="100%"></th>
+                    </tr>
+                </thead>
+                
+                
+                
+                
+                <tbody>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="4n">OnePlus Two</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="4o">OxygenOS 2.1.1 [5.1.1]</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="4s">5"</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="4u">Since 12.11.2015</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--6-col">
+        <div class="mdl-card mdl-shadow--2dp" style="width:100%;">
+            <div class="mdl-tooltip" for="3n"><strong>Name</strong></div><div class="mdl-tooltip" for="3o"><strong>Operating System</strong></div><div class="mdl-tooltip" for="3s"><strong>Screen Size</strong></div><div class="mdl-tooltip" for="3u"><strong>Used</strong></div><table class="mdl-data-table mdl-js-data-table">
+                <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric" style="width:100%;"><img src="./img/p003.jpg" alt="OnePlus One" width="100%"></th>
+                    </tr>
+                </thead>
+                
+                
+                
+                
+                <tbody>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="3n">OnePlus One</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="3o">Cyanogenmod 13.1S [5.1.1]</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="3s">5"</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="3u">24.02.2015 - 16.11.2015</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--6-col">
+        <div class="mdl-card mdl-shadow--2dp" style="width:100%;">
+            <div class="mdl-tooltip" for="2n"><strong>Name</strong></div><div class="mdl-tooltip" for="2o"><strong>Operating System</strong></div><div class="mdl-tooltip" for="2s"><strong>Screen Size</strong></div><div class="mdl-tooltip" for="2u"><strong>Used</strong></div><table class="mdl-data-table mdl-js-data-table">
+                <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric" style="width:100%;"><img src="./img/p002.jpg" alt="Samsung Galaxy S3 mini" width="100%"></th>
+                    </tr>
+                </thead>
+                
+                
+                
+                
+                <tbody>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="2n">Samsung Galaxy S3 mini</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="2o">Android KitKat [4.4.4]</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="2s">4"</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="2u">Between 07.2013 - 24.02.2015</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="mdl-cell mdl-cell--6-col">
+        <div class="mdl-card mdl-shadow--2dp" style="width:100%;">
+            <div class="mdl-tooltip" for="1n"><strong>Name</strong></div><div class="mdl-tooltip" for="1o"><strong>Operating System</strong></div><div class="mdl-tooltip" for="1s"><strong>Screen Size</strong></div><div class="mdl-tooltip" for="1u"><strong>Used</strong></div><table class="mdl-data-table mdl-js-data-table">
+                <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric" style="width:100%;"><img src="./img/p001.jpg" alt="Samsung Omnia 2" width="100%"></th>
+                    </tr>
+                </thead>
+                
+                
+                
+                
+                <tbody>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="1n">Samsung Omnia 2</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="1o">Windows Mobile 6.5</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="1s">3.7"</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric" style="color:gray;text-align:center;" id="1u">Smthng smthng 2011 - 2013</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> 
+    </div>
+</div>
+</div>
+                        </div>
+                    </div>
+                    <footer class="mdl-mini-footer" id="s2">
+                        <div class="mdl-mini-footer--left-section">
+                            <ul class="mdl-mini-footer--link-list">
+                                <li><a href="https://github.com/MCManuelLP">GitHub</a></li>
+                                <li><a href="https://twitter.com/MCManuelLP">Twitter</a></li>
+                            </ul>
+                        </div>
+                        <div class="mdl-mini-footer--right-section">
+                            <ul class="mdl-mini-footer--link-list">
+                                <div class="mdl-tooltip" for="h" data-upgraded=",MaterialTooltip">There's no such thing!</div>
+                                <li><a href="javascript:void(0);" id="h" tabindex="0">Help</a></li>
+                            </ul>
+                        </div>
+                    </footer>
+                </div>
+            </section>
+        </main>
+    <div class="mdl-layout__obfuscator"></div></div></div>
+	
+
+
+</body></html>
