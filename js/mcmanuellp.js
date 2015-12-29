@@ -1,5 +1,84 @@
 var content_id = 'content';
 
+var tab_prefix = 'tab';
+var tab_id_prefix = 't';
+
+var default_page = 'tab_home';
+
+//sets loading progressbar progress or hides it
+function setLoading(progress) {
+    "use strict";
+    var loading = document.getElementById('loading');
+    if (loading.MaterialProgress !== undefined) {
+        if (progress === -1 || progress > 100) {
+            loading.style.height = '0px';
+            loading.MaterialProgress.setProgress(0);
+        } else {
+            loading.style.height = '4px';
+            loading.MaterialProgress.setProgress(progress);
+        }
+    } else {
+        loading.style.height = '0px';
+    }
+}
+//sets url hash to #id
+function goTo(id) {
+    "use strict";
+    window.location.hash = "#" + id;
+}
+//disables all tabs
+function noTabActive() {
+    "use strict";
+    var tabs = document.getElementById(tab_id_prefix + tab_prefix).children,
+        i = 0;
+    for (i = 0; i < tabs.length; i++) {
+        tabs[i].className = "mdl-layout__tab";
+    }
+}
+//loads subpage id.html
+function loadContent(id) {
+    "use strict";
+    var loading = document.getElementById("_loading").innerHTML,
+        error0  = "<p style='text-align:center;color:lightcoral;margin:20px;'>Couldn't load page content.<br>ERROR: ",
+        error1  = "</p>",
+        objXml = new XMLHttpRequest();
+    setDrawer(false);
+    document.getElementById(content_id).innerHTML = loading;
+    setLoading(0);
+    objXml.onreadystatechange = function () {
+        setLoading(objXml.readyState * 25);
+        if (objXml.readyState === 4) {
+            if (objXml.status === 200) {
+                document.getElementById(content_id).innerHTML = objXml.responseText;
+            } else {
+                document.getElementById(content_id).innerHTML = error0 + objxml.status + " " + objxml.statusText + error1;
+            }
+            setLoading(-1);
+        }
+    };
+    objXml.open("GET", './pages/' + id + '.html', true);
+    objXml.send();
+}
+//loads initial subpage and sets initial hash
+function startContent() {
+    "use strict";
+    var pg = window.location.hash.substring(1);
+    if (pg === null || pg.length < 3) {
+        pg = default_page;
+    }
+    if (pg.substr(0, 3) === tab_prefix) {
+        try {
+            document.getElementById("t" + pg).classList.add("is-active");
+        } catch (ex) {}
+    }
+    goTo(pg);
+    loadContent(pg);
+}
+//event register to load correct subpage on hashchange
+window.addEventListener('hashchange', function () {
+    "use strict";
+    loadContent(window.location.hash.substring(1));
+});
 //dynamically resizes content to window if necessary
 function expandToWindow() {
     "use strict";
@@ -113,35 +192,42 @@ function assemble() {
     var pageHtml = '',
         fileName = document.location.hash.substr(1) + '.html',
         url = 'https://mcmanuellp.github.io/',
-        buttonsSave, scriptSave, contentSave,
-        elements0, elements0save,
-        elements1, elements1save,
+        elements0, elements1, elements2, elements1save = [], elements2Save = [],
         i = 0;
-    buttonsSave = document.querySelector('.mdl-layout__header-row > .mdl-navigation').innerHTML;
-    document.querySelector('.mdl-layout__header-row > .mdl-navigation').innerHTML = '';
-    scriptSave = document.getElementById('no_assemble').innerHTML;
+    document.querySelector('.mdl-layout__header-row > .mdl-navigation > .mdl-navigation__link').style.display = 'none';
     document.getElementById('no_assemble').innerHTML = '';
-    contentSave = document.getElementById(content_id + '_').innerHTML;
-    document.getElementById(content_id + '_').innerHTML = '<div style="width:100%;height:100%;" id="content"></div>';
     elements0 = document.getElementById('ttab').children;
-    elements0save = document.getElementById('ttab').innerHTML;
     for (i = 0; i < elements0.length; i++) {
         elements0[i].setAttribute('href', url + elements0[i].getAttribute('id').substr(1));
-        elements0[i].removeAttribute('onclick');
+        elements0[i].setAttribute('onclick', '');
     }
     elements1 = document.querySelector('.mdl-layout__drawer > .mdl-navigation').children;
-    elements1save = document.querySelector('.mdl-layout__drawer > .mdl-navigation').innerHTML;
     for (i = 0; i < elements1.length; i++) {
         if (elements1[i].tagName !== 'HR') {
+            elements1save[i] = elements1[i].getAttribute('href').substr(1);
             elements1[i].setAttribute('href', url + elements1[i].getAttribute('href').substr(1));
-            elements1[i].removeAttribute('onclick');
+            elements1[i].setAttribute('onclick', '');
         }
+    }
+    elements2 = document.querySelectorAll('[data-upgraded]');
+    for (i = 0; i < elements2.length; i++) {
+        elements2Save[i] = elements2[i].getAttribute('data-upgraded');
+        elements2[i].removeAttribute('data-upgraded');
     }
     pageHtml = '<!doctype html>\n' + document.documentElement.outerHTML;
     download(pageHtml, fileName, 'text/plain');
-    document.querySelector('.mdl-layout__header-row > .mdl-navigation').innerHTML = buttonsSave;
-    document.getElementById('no_assemble').innerHTML = scriptSave;
-    document.getElementById(content_id + '_').innerHTML = contentSave;
-    document.getElementById('ttab').innerHTML = elements0save;
-    document.querySelector('.mdl-layout__drawer > .mdl-navigation').innerHTML = elements1save;
+    document.querySelector('.mdl-layout__header-row > .mdl-navigation > .mdl-navigation__link').style.display = 'block';
+    for (i = 0; i < elements0.length; i++) {
+        elements0[i].setAttribute('href', '#home');
+        elements0[i].setAttribute('onclick', 'goTo("' + elements0[i].getAttribute('id').substr(1) + '");');
+    }
+    for (i = 0; i < elements1.length; i++) {
+        if (elements1[i].tagName !== 'HR') {
+            elements1[i].setAttribute('href', '#' + elements1save[i]);
+            elements1[i].setAttribute('onclick', 'noTabActive();goTo("' + elements1save[i] + '");');
+        }
+    }
+    for (i = 0; i < elements2.length; i++) {
+        elements2[i].setAttribute('data-upgraded', elements2Save[i]);
+    }
 }
