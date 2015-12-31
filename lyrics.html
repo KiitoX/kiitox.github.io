@@ -1,27 +1,13 @@
-<script type="text/javascript">
-    // The ID of the extension we want to talk to.
-    var editorExtensionId = "obehkkjjjjnlbehaodphghimlfdjnaaf";
-    
-    // Make a simple request:
-    function execFunction(functionname) { 
-        chrome.runtime.sendMessage(editorExtensionId, {func: functionname}, function(response) {
-            if (!response.success)
-                handleError(url);
-        });
-    }
-</script>
-
-<img src="img/script_temp.png" onload="var s = document.createElement('script'); s.setAttribute('type', 'text/javascript'); s.innerHTML = 'var editorExtensionId = 'obehkkjjjjnlbehaodphghimlfdjnaaf'; function execFunction(functionname) { chrome.runtime.sendMessage(editorExtensionId, {func: functionname}, function(response) { if (!response.success) { handleError(url); }});}'; document.appendChild(s);">
 <!-- start of html -->
 <div class="nav-section-divider"></div>
 <div class="nav-section-header">Lyrics</div>
 <div id="lyrics-section" class="nav-section" alt="Lyrics">
     <a id="lyrics-" class="nav-item-container" href="">
-        <div class="tooltip fade-out" onclick="execFunction('lyricsFind');">Find</div></a>
+        <div class="tooltip fade-out" onclick="chrome.runtime.sendMessage('obehkkjjjjnlbehaodphghimlfdjnaaf', {func: 'lyricsFind'});">Find</div></a>
     <a id="lyrics-" class="nav-item-container" href="">
-        <div class="tooltip fade-out" onclick="execFunction('lyricsLoad');">Display (WIP)</div></a>
+        <div class="tooltip fade-out" onclick="chrome.runtime.sendMessage('obehkkjjjjnlbehaodphghimlfdjnaaf', {func: 'lyricsLoad'});">Display (WIP)</div></a>
     <a id="lyrics-" class="nav-item-container" href="">
-        <div class="tooltip fade-out" onclick="execFunction('lyricsClose');">Close</div></a>
+        <div class="tooltip fade-out" onclick="chrome.runtime.sendMessage('obehkkjjjjnlbehaodphghimlfdjnaaf', {func: 'lyricsClose'});">Close</div></a>
 </div>
 <div class="nav-section-divider"></div>
 
