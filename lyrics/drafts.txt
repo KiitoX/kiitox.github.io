@@ -1,0 +1,13 @@
+//get gpm audio tag
+document.getElementsByTagName('audio')[0]
+//check wether audio is playing or paused, works reliably
+.paused ( = boolean)
+//gets current state of audio
+.readyState ( = int(0-4))
+//returns length of buffered audio (I think (or not (maybe total buffered audio (since playback start))))
+.buffered.end(0)
+//returns audio network state (1 if fully loaded)
+.networkState ( = int(0-3))
+
+
+// BTW THIS IS BULLCRAP
