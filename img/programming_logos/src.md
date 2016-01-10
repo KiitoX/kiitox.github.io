@@ -1,9 +1,6 @@
-c.jpg - https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/The_C_Programming_Language_logo.svg/452px-The_C_Programming_Language_logo.svg.png
-css3.jpg - http://ohdoylerules.com/content/images/css3.svg
-html5.jpg - http://www.w3.org/html/logo/downloads/HTML5_Logo_256.png
-java.jpg - https://upload.wikimedia.org/wikipedia/en/8/88/Java_logo.png
-javascript.jpg - https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/240px-JavaScript-logo.png
-lua.jpg - http://www.lua.org/images/lua.gif
-perl.jpg - http://www.perlfoundation.org/attachment/perl_trademark/programming_republic_of_perl-300px.png
-python.jpg - https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/320px-Python_logo_and_wordmark.svg.png
-scala.jpg - http://www.scala-lang.org/resources/img/scala-logo.png
+c.png - file:selfmade
+html5.png - http://www.w3.org/html/logo/
+java.png - http://vignette4.wikia.nocookie.net/spore/images/2/2e/Java_Logo.svg/revision/latest?cb=20101031041704
+javascript.png - https://commons.wikimedia.org/wiki/File:Unofficial_JavaScript_logo_2.svg
+python.png - https://www.python.org/
+scala.png - http://www.scala-lang.org/
