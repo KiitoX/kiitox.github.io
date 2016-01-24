@@ -2,127 +2,128 @@
 
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="My web appearance, made with sweat and tears.">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="My web appearance, made with sweat and tears.">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Mobile support -->
-    <meta name="theme-color" content="#3F51B5"><!-- Chrome Android colour -->
-    <meta itemprop="image" content="./img/favicon_128x.png">
-    <link rel="shortcut icon" href="./img/favicon_32x.png">
+	<!-- Chrome Android colour -->
+	<meta name="theme-color" content="#3F51B5">
+	<meta itemprop="image" content="./img/favicon_128x.png">
+	<link rel="shortcut icon" href="./img/favicon_32x.png">
 	<title>MCManuelLP</title><!--Title is variable-->
 	
 	<!-- Material Desing Lite -->
-    <!--link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.blue_grey-deep_orange.min.css" /--> 
-    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css" />
-    <!--link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.green-light_green.min.css" /-->
-    
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-    
+	<!--link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.blue_grey-deep_orange.min.css" /--> 
+	<link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css" />
+	<!--link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.green-light_green.min.css" /-->
+	
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+	
 	<!-- The place for script stuff... -->
-    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
-    <script src="js/analytics.js"></script>
-    <script src="js/mcmanuellp.js"></script>
-    <div id="no_assemble"><script src="js/modular.js"></script></div>
-    
-    <!-- Custom stuff, if necessary -->
+	<script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+	<script src="js/analytics.js"></script>
+	<script src="js/mcmanuellp.js"></script>
+	<div id="no_assemble"><script src="js/modular.js"></script></div>
+	
+	<!-- Custom stuff, if necessary -->
 	<style type="text/css">
-    	::-webkit-scrollbar {
-            display: none;
-        }
+		::-webkit-scrollbar {
+			display: none;
+		}
 	</style>
 </head>
 <body onresize='expandToWindow();'>
-    
-    <div style="background-color:lightPink;height:24px;width:100%;display:none;" id="noChrome">
-        <p style="vertical-align:middle;text-align:center;">
-            <i class="material-icons md-18" href="#" style="vertical-align:middle;text-align:center;" onclick='hideCMessage();' id="err">close</i>
-            For full compatibility (&amp; beauty) I encourage the use of a Webkit supported Browser e.g. Google Chrome, Microsoft Edge, Safari, Opera 15+...
-        </p>
-        <div class="mdl-tooltip" for="err">Close</div>
-    </div>
-    
-    <!--
-    A few page naming rules:
-     * the default page's file name is a constant in the script 'js/mcmanuellp.js'
-     * tab ids have to start with var tab_id_prefix + var tab_prefix
-     * tab file names have to start with var tab_prefix
-     * tab href must be '#home' (id of section .mdl-layout__tab-panel)
-    -->
-    
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <header class="mdl-layout__header" id="s1">
-            <div class="mdl-layout__header-row">
-                <span class="mdl-layout-title">MCManuelLP</span>
-                <div class="mdl-layout-spacer"></div>
-                <nav class="mdl-navigation">
-                    <a class="mdl-navigation__link" href="javascript:void(0);" onclick="assemble();" style="display:none;">
-                        <i class="material-icons" id="assembly">build</i>
-                    </a>
-                    <div class="mdl-tooltip mdl-tooltip--large" for="assembly">Webpages, assemble!</div>
-                    <a class="mdl-navigation__link" href="https://github.com/MCManuelLP/mcmanuellp.github.io">
-                        <i class="material-icons" id="insides">build</i>
-                    </a>
-                    <div class="mdl-tooltip mdl-tooltip--large" for="insides">Look at my insides!</div>
-                </nav>
-            </div>
-            <!-- Tabs -->
-            <div class="mdl-layout__tab-bar mdl-js-ripple-effect" style="overflow:hidden;" id="ttab">
-                <a class="mdl-layout__tab" onclick="goTo('tab_home');" id="ttab_home" href="#home">Home</a>
-                <a class="mdl-layout__tab" onclick="goTo('tab_internet');" id="ttab_internet" href="#home">Nifty Internet</a>
-                <!--a class="mdl-layout__tab" onclick="goTo('tab_lyrics');" id="ttab_lyrics" href="#home">Lyrics</a-->
-                <a class="mdl-layout__tab" onclick="goTo('tab_vibrant');" id="ttab_vibrant" href="#home">Vibrant Ink</a>
-            </div>
-        </header>
-        <div class="mdl-layout__drawer" id="swipeable2">
-            <span class="mdl-layout-title">About &amp; around me</span>
-            <!-- Sidebar -->
-            <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" onclick="noTabActive();goTo('programming');" href="#programming">Programming</a>
-                <a class="mdl-navigation__link" onclick="noTabActive();goTo('pcgames');" href="#pcgames">PC Games</a>
-                <a class="mdl-navigation__link" onclick="noTabActive();goTo('moviestv');" href="#moviestv">Movies &amp; TV</a>
-                <hr style="width:90%; margin:auto;">
-                <a class="mdl-navigation__link" onclick="noTabActive();goTo('hardware');" href="#hardware">Hardware</a>
-                <hr style="width:90%; margin:auto;">
-                <a style="margin:5%" href="http://www.w3.org/html/logo/">
-                    <img src="http://www.w3.org/html/logo/badge/html5-badge-h-connectivity-css3-device-semantics.png" width="229" height="64" alt="HTML5 Powered with Connectivity / Realtime, CSS3 / Styling, Device Access, and Semantics" title="HTML5 Powered with Connectivity / Realtime, CSS3 / Styling, Device Access, and Semantics">
-                </a>
-            </nav>
-        </div>
-        
-        <main class="mdl-layout__content" id="swipeable1" style="background-color:lightsteelblue">
-            
-            <section class="mdl-layout__tab-panel is-active" id="home">
-                <div class="page-content">
-                    <div class="mdl-grid mdl-shadow--4dp">
-                        <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
-                        <div class="mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col" id="content_">
-                            <!-- Reference HTML -->
-                            <div style="display:none;" id="_loading"><p style="text-align:center;color:gray;margin:20px;">Loading ...</p></div>
-                            <div style="display:none;" id="_error"></div><!-- todo do? -->
-                            <!-- Loading progress bar. -->
-                            <div style="height:4px;"><div class="mdl-progress mdl-js-progress" id="loading" style="width:100%;"></div></div>
-                            <!-- Content goes in here! -->
-                            <div style="width:100%;height:100%;" id="content"></div>
-                        </div>
-                    </div>
-                    <footer class="mdl-mini-footer" id="s2">
-                        <div class="mdl-mini-footer--left-section">
-                            <ul class="mdl-mini-footer--link-list">
-                                <li><a href="https://github.com/MCManuelLP">GitHub</a></li>
-                                <li><a href="https://twitter.com/MCManuelLP">Twitter</a></li>
-                            </ul>
-                        </div>
-                        <div class="mdl-mini-footer--right-section">
-                            <ul class="mdl-mini-footer--link-list">
-                                <li>&copy; 2015-2016 MCManuelLP</li>
-                            </ul>
-                        </div>
-                    </footer>
-                </div>
-            </section>
-        </main>
-    </div>
+	
+	<div style="background-color:lightPink;height:24px;width:100%;display:none;" id="noChrome">
+		<p style="vertical-align:middle;text-align:center;">
+			<i class="material-icons md-18" href="#" style="vertical-align:middle;text-align:center;" onclick='hideCMessage();' id="err">close</i>
+			For full compatibility (&amp; beauty) I encourage the use of a Webkit supported Browser e.g. Google Chrome, Microsoft Edge, Safari, Opera 15+...
+		</p>
+		<div class="mdl-tooltip" for="err">Close</div>
+	</div>
+	
+	<!--
+	A few page naming rules:
+	 * the default page's file name is a constant in the script 'js/mcmanuellp.js'
+	 * tab ids have to start with var tab_id_prefix + var tab_prefix
+	 * tab file names have to start with var tab_prefix
+	 * tab href must be '#home' (id of section .mdl-layout__tab-panel)
+	-->
+	
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+		<header class="mdl-layout__header" id="s1">
+			<div class="mdl-layout__header-row">
+				<span class="mdl-layout-title">MCManuelLP</span>
+				<div class="mdl-layout-spacer"></div>
+				<nav class="mdl-navigation">
+					<a class="mdl-navigation__link" href="javascript:void(0);" onclick="assemble();" style="display:none;">
+						<i class="material-icons" id="assembly">build</i>
+					</a>
+					<div class="mdl-tooltip mdl-tooltip--large" for="assembly">Webpages, assemble!</div>
+						<a class="mdl-navigation__link" href="https://github.com/MCManuelLP/mcmanuellp.github.io">
+							<i class="material-icons" id="insides">build</i>
+						</a>
+					<div class="mdl-tooltip mdl-tooltip--large" for="insides">Look at my insides!</div>
+				</nav>
+			</div>
+			<!-- Tabs -->
+			<div class="mdl-layout__tab-bar mdl-js-ripple-effect" style="overflow:hidden;" id="ttab">
+				<a class="mdl-layout__tab" onclick="goTo('tab_home');" id="ttab_home" href="#home">Home</a>
+				<a class="mdl-layout__tab" onclick="goTo('tab_internet');" id="ttab_internet" href="#home">Nifty Internet</a>
+				<!--a class="mdl-layout__tab" onclick="goTo('tab_lyrics');" id="ttab_lyrics" href="#home">Lyrics</a-->
+				<a class="mdl-layout__tab" onclick="goTo('tab_vibrant');" id="ttab_vibrant" href="#home">Vibrant Ink</a>
+			</div>
+		</header>
+		<div class="mdl-layout__drawer" id="swipeable2">
+			<span class="mdl-layout-title">About &amp; around me</span>
+			<!-- Sidebar -->
+			<nav class="mdl-navigation">
+				<a class="mdl-navigation__link" onclick="noTabActive();goTo('programming');" href="#programming">Programming</a>
+				<a class="mdl-navigation__link" onclick="noTabActive();goTo('pcgames');" href="#pcgames">PC Games</a>
+				<a class="mdl-navigation__link" onclick="noTabActive();goTo('moviestv');" href="#moviestv">Movies &amp; TV</a>
+				<hr style="width:90%; margin:auto;">
+				<a class="mdl-navigation__link" onclick="noTabActive();goTo('hardware');" href="#hardware">Hardware</a>
+				<hr style="width:90%; margin:auto;">
+				<a style="margin:5%" href="http://www.w3.org/html/logo/">
+					<img src="http://www.w3.org/html/logo/badge/html5-badge-h-connectivity-css3-device-semantics.png" width="229" height="64" alt="HTML5 Powered with Connectivity / Realtime, CSS3 / Styling, Device Access, and Semantics" title="HTML5 Powered with Connectivity / Realtime, CSS3 / Styling, Device Access, and Semantics">
+				</a>
+			</nav>
+		</div>
+		
+		<main class="mdl-layout__content" id="swipeable1" style="background-color:lightsteelblue">
+			
+			<section class="mdl-layout__tab-panel is-active" id="home">
+				<div class="page-content">
+					<div class="mdl-grid mdl-shadow--4dp">
+						<div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+						<div class="mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col" id="content_">
+							<!-- Reference HTML -->
+							<div style="display:none;" id="_loading"><p style="text-align:center;color:gray;margin:20px;">Loading ...</p></div>
+							<div style="display:none;" id="_error"></div><!-- todo do? -->
+							<!-- Loading progress bar. -->
+							<div style="height:4px;"><div class="mdl-progress mdl-js-progress" id="loading" style="width:100%;"></div></div>
+							<!-- Content goes in here! -->
+							<div style="width:100%;height:100%;" id="content"></div>
+						</div>
+					</div>
+					<footer class="mdl-mini-footer" id="s2">
+						<div class="mdl-mini-footer--left-section">
+							<ul class="mdl-mini-footer--link-list">
+								<li><a href="https://github.com/MCManuelLP">GitHub</a></li>
+								<li><a href="https://twitter.com/MCManuelLP">Twitter</a></li>
+							</ul>
+						</div>
+						<div class="mdl-mini-footer--right-section">
+							<ul class="mdl-mini-footer--link-list">
+								<li>&copy; 2015-2016 MCManuelLP</li>
+							</ul>
+						</div>
+					</footer>
+				</div>
+			</section>
+		</main>
+	</div>
 	
 </body>
 </html>
