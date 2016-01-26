@@ -1,4 +1,9 @@
 .img-tile {
 	height: inherit;
-    width: auto;
+	width: auto;
+}
+
+.img-tile img {
+	 width: 100%;
+	 min-height: 32px;
 }
