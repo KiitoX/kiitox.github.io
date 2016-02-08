@@ -84,11 +84,14 @@ window.addEventListener('hashchange', function () {
 //dynamically resizes content to window if necessary
 function expandToWindow() {
     "use strict";
-    var minH = window.innerHeight;
+    var minH = window.innerHeight,
+        minW = window.innerWidth;
     minH -= document.getElementById("s1").offsetHeight;
     minH -= 32;/*top and bottom margin of content block*/
     minH -= document.getElementById("s2").offsetHeight;
     document.getElementById(content_id + '_').style.minHeight = minH + "px";
+    document.getElementById(content_id + '_').style.marginBottom = document.getElementById("s2").offsetHeight + 8 + "px";
+    document.getElementById("s2").style.width = minW - 32 + "px";
 }
 //toggles drawer
 function setDrawer(bool) {
