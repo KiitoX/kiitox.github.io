@@ -50,6 +50,7 @@ function loadContent(id) {
         if (objXml.readyState === 4) {
             if (objXml.status === 200) {
                 document.getElementById(content_id).innerHTML = objXml.responseText;
+                componentHandler.upgradeDom();
             } else if (objXml !== undefined) {
                 document.getElementById(content_id).innerHTML = error0 + objXml.status + " : " + (objXml.statusText.length > 0 ? objXml.statusText : 'Unknown Error') + error1;
             } else {
