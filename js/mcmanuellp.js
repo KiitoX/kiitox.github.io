@@ -177,6 +177,8 @@ function addCardHere(content_array) {
                 supporting_p = document.createElement('p');
             supporting_div.className = 'mdl-card__supporting-text';
             supporting_p.style.margin = '0';
+            supporting_p.style.fontSize = '13px';
+            supporting_p.style.lineHeight = '18px';
             supporting_p.innerHTML = supporting_text;
             array_next++;
             resize_elements = resize_elements.concat(cell);
