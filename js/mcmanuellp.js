@@ -64,15 +64,6 @@ function loadContent(id) {
     objXml.open("GET", './pages/' + id + '.html', true);
     objXml.send();
 }
-//execute function and remove debug img
-function execAndClean() {
-    for (var i = 0; i < arguments.length; i++) {
-        arguments[i]();
-    }
-    console.log('finished executing loaded page script functions');
-    var img = document.getElementById(exec_img_id);
-    img.parentNode.removeChild(img);
-}
 //loads initial subpage and sets initial hash
 function startContent() {
     "use strict";
@@ -88,11 +79,6 @@ function startContent() {
     goTo(pg);
     loadContent(pg);
 }
-//event register to load correct subpage on hashchange
-window.addEventListener('hashchange', function () {
-    "use strict";
-    loadContent(window.location.hash.substring(1));
-});
 //dynamically resizes content to window if necessary
 function expandToWindow() {
     "use strict";
@@ -104,6 +90,22 @@ function expandToWindow() {
     document.getElementById(content_id + '_').style.minHeight = minH + "px";
     document.getElementById(content_id + '_').style.marginBottom = document.getElementById("s2").offsetHeight + 8 + "px";
     document.getElementById("s2").style.width = minW - 32 + "px";
+}
+//execute function and remove debug img
+function execAndClean() {
+    "use strict";
+    for (var i = 0; i < arguments.length; i++) {
+        if (arguments[i].constructor === Array) {
+            arguments[i][0](arguments[i].slice(1));
+        } else if (arguments[i].constructor === String) {
+            arguments[i]();
+        } else {
+            console.error('Unknown parameter type: ' + arguments[i].constructor);
+        }
+    }
+    console.info('Finished executing loaded page scripts');
+    var img = document.getElementById(exec_img_id);
+    img.parentNode.removeChild(img);
 }
 //toggles drawer
 function setDrawer(bool) {
@@ -126,6 +128,59 @@ function setLink() {
     };
     objXml.open('GET', './lyrics/js-bookmark-applet.js', true);
     objXml.send();
+}
+//[link, img_link, alt, type, custom..]
+function addCardHere(content_array) {
+    "use strict";
+    var parent = document.getElementById(exec_img_id).parentElement,
+        img_link = content_array[0],
+        img_alt = content_array[1],
+        type = content_array[2],
+        array_next = 3,
+        cell = document.createElement('div'),
+        card = document.createElement('div'),
+        img = document.createElement('img');
+    cell.className = 'mdl-cell mdl-cell--4-col';
+    card.className = 'mdl-card mdl-shadow--2dp img-tile';
+    img.src = img_link;
+    img.alt = img_alt;
+    card.appendChild(img);
+    switch (type) {
+        case "image"://custom -> title, link
+            var title = content_array[array_next];
+            //TODO:wip
+            /* in card:
+            <div class="mdl-card__title mdl-card--expand"></div>
+            <div class="mdl-card__actions">
+                <span class="demo-card-image__filename">Image.jpg</span>
+            </div>
+            */
+            break;
+        case "info"://custom -> supporting_text, [action_name, action_link]...
+            var supporting_text = content_array[array_next],
+                supporting_div = document.createElement('div');
+            supporting_div.className = "mdl-card__supporting-text";
+            supporting_div.innerHTML = supporting_text;
+            array_next++;
+            card.appendChild(supporting_div);
+        case "actions"://custom -> [action_name, action_link]...
+            var action = content_array.slice(array_next),
+                action_div = document.createElement('div');
+            action_div.className = "mdl-card__actions mdl-card--border";
+            for (var i = 0; i < action.length; i++) {
+                var action_a = document.createElement('a');
+                action_a.className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect";
+                action_a.innerHTML = action[i][0];
+                action_a.href = action[i][1];
+                action_div.appendChild(action_a);
+            }
+            card.appendChild(action_div);
+            break;
+        default:
+            
+    }
+    cell.appendChild(card);
+    parent.appendChild(cell);
 }
 //checks webkit compatibility and displays notification
 function checkChromium() {
@@ -181,19 +236,6 @@ function addDrawerSwipe(element, bool) {
         }
     }, false);
 }
-//init all things to do on load
-window.addEventListener('load', function () {
-    "use strict";
-    var touchsurface1 = document.getElementById('swipeable1'),
-        touchsurface2 = document.getElementById('swipeable2'),
-        touchsurface3 = document.querySelector('.mdl-layout__obfuscator');
-    
-    expandToWindow();
-    checkChromium();
-    addDrawerSwipe(touchsurface1, true);
-    addDrawerSwipe(touchsurface2, false);
-    addDrawerSwipe(touchsurface3, false);
-});
 //lib function to save text
 function download(text, name, type) {
     "use strict";

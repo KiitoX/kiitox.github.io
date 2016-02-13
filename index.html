@@ -27,6 +27,24 @@
 	<script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
 	<script src="js/analytics.js"></script>
 	<script src="js/mcmanuellp.js"></script>
+    <script type=text/javascript>
+        window.addEventListener('load', function () {
+            "use strict";
+            var touchsurface1 = document.getElementById('swipeable1'),
+                touchsurface2 = document.getElementById('swipeable2'),
+                touchsurface3 = document.querySelector('.mdl-layout__obfuscator');
+
+            expandToWindow();
+            checkChromium();
+            addDrawerSwipe(touchsurface1, true);
+            addDrawerSwipe(touchsurface2, false);
+            addDrawerSwipe(touchsurface3, false);
+        });
+        window.addEventListener('hashchange', function () {
+            "use strict";
+            loadContent(window.location.hash.substring(1));
+        });
+    </script>
 	
 	<!-- Custom stuff, if necessary -->
 	<style type="text/css">
