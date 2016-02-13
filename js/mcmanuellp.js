@@ -163,7 +163,9 @@ function addCardHere(content_array) {
     card.appendChild(img);
     switch (type) {
         case 'image'://custom -> title, link
-            var title = content_array[array_next];
+            var title = content_array[array_next++], 
+                link = content_array[array_next++];
+            img.href = link;
             //TODO:wip
             /* in card:
             <div class="mdl-card__title mdl-card--expand"></div>
@@ -173,7 +175,7 @@ function addCardHere(content_array) {
             */
             break;
         case 'info'://custom -> supporting_text, [action_name, action_link]...
-            var supporting_text = content_array[array_next],
+            var supporting_text = content_array[array_next++],
                 supporting_div = document.createElement('div'),
                 supporting_p = document.createElement('p');
             supporting_div.className = 'mdl-card__supporting-text';
@@ -181,7 +183,6 @@ function addCardHere(content_array) {
             supporting_p.style.fontSize = '13px';
             supporting_p.style.lineHeight = '18px';
             supporting_p.innerHTML = supporting_text;
-            array_next++;
             resize_elements = resize_elements.concat(cell);
             cell.addEventListener("unresize", function () {
                 supporting_p.style.removeProperty('height');
@@ -195,7 +196,7 @@ function addCardHere(content_array) {
             supporting_div.appendChild(supporting_p);
             card.appendChild(supporting_div);
         case 'actions'://custom -> [action_name, action_link]...
-            var action = content_array.slice(array_next),
+            var action = content_array.slice(array_next++),
                 action_div = document.createElement('div');
             action_div.className = 'mdl-card__actions mdl-card--border';
             for (var i = 0; i < action.length; i++) {
@@ -212,6 +213,7 @@ function addCardHere(content_array) {
     }
     cell.appendChild(card);
     parent.appendChild(cell);
+    componentHandler.upgradeDom();
 }
 //checks webkit compatibility and displays notification
 function checkChromium() {
