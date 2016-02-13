@@ -7,6 +7,8 @@ var default_page = 'tab_home';
 
 var exec_img_id = 'exec_img';
 
+var resize_elements = [];
+
 //sets loading progressbar progress or hides it
 function setLoading(progress) {
     "use strict";
@@ -44,6 +46,7 @@ function loadContent(id) {
         error0  = "<p style='text-align:center;color:lightcoral;margin:20px;'>Couldn't load page content.<br>ERROR: ",
         error1  = "</p>",
         objXml = new XMLHttpRequest();
+    resize_elements = [];
     setDrawer(false);
     document.getElementById(content_id).innerHTML = loading;
     setLoading(0);
@@ -90,6 +93,11 @@ function expandToWindow() {
     document.getElementById(content_id + '_').style.minHeight = minH + "px";
     document.getElementById(content_id + '_').style.marginBottom = document.getElementById("s2").offsetHeight + 8 + "px";
     document.getElementById("s2").style.width = minW - 32 + "px";
+    var event = document.createEvent("UIEvents");
+    event.initEvent("resize", false, false);
+    for (var i = 0; i < resize_elements.length; i++) {
+        resize_elements[i].dispatchEvent(event);
+    }
 }
 //execute function and remove debug img
 function execAndClean() {
@@ -164,6 +172,7 @@ function addCardHere(content_array) {
             supporting_div.className = 'mdl-card__supporting-text';
             supporting_div.innerHTML = supporting_text;
             array_next++;
+            resize_elements.concat(cell);
             cell.onresize = function f() {
                 var cell_height = cell.offsetHeight,
                     card_height = card.offsetHeight,
