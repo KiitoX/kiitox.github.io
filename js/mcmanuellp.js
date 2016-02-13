@@ -95,14 +95,14 @@ function expandToWindow() {
     document.getElementById(content_id + '_').style.marginBottom = document.getElementById("s2").offsetHeight + 8 + "px";
     document.getElementById("s2").style.width = minW - 32 + "px";
     var unresize = document.createEvent("UIEvents"),
-        resize = document.createEvent("UIEvents");
+        doresize = document.createEvent("UIEvents");
     unresize.initEvent("unresize", false, false);
-    resize.initEvent("resize", false, false);
+    doresize.initEvent("doresize", false, false);
     for (var i = 0; i < resize_elements.length; i++) {
         resize_elements[i].dispatchEvent(unresize);
     }
     for (var i = 0; i < resize_elements.length; i++) {
-        resize_elements[i].dispatchEvent(resize);
+        resize_elements[i].dispatchEvent(doresize);
     }
 }
 //execute function and remove debug img
@@ -189,13 +189,13 @@ function addCardHere(content_array) {
             resize_elements = resize_elements.concat(cell);
             cell.addEventListener("unresize", function () {
                 supporting_p.style.removeProperty('height');
-            }, false)
-            cell.onresize = function () {
+            }, false);
+            cell.addEventListener("doresize", function () {
                 var cell_height = cell.offsetHeight,
                     card_height = card.offsetHeight,
                     support_height = supporting_p.offsetHeight;
                 supporting_p.style.height = (support_height + cell_height - card_height) + "px";
-            };
+            }, false);
             supporting_div.appendChild(supporting_p);
             card.appendChild(supporting_div);
         case 'actions'://custom -> [action_name, action_link]...
