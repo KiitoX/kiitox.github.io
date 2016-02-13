@@ -98,8 +98,7 @@ function expandToWindow() {
     document.getElementById(content_id + '_').style.minHeight = minH + "px";
     document.getElementById(content_id + '_').style.marginBottom = document.getElementById("s2").offsetHeight + 8 + "px";
     document.getElementById("s2").style.width = minW - 32 + "px";
-    dispatchUnResize();
-    dispatchDoResize();
+    timeoutUnDoResize();
 }
 //displatch unresize event
 function dispatchUnResize() {
@@ -114,6 +113,11 @@ function dispatchDoResize() {
         console.log("doresize");
         resize_elements[i].dispatchEvent(doresize);
     }
+}
+//timed un & do resize
+function timeoutUnDoResize() {
+    setTimeout(dispatchUnResize, 1000); 
+    setTimeout(dispatchDoResize, 2000);
 }
 //execute function and remove debug img
 function execAndClean() {
