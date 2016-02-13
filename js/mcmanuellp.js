@@ -115,10 +115,8 @@ function execAndClean() {
             console.error('undefined function...')
         } else if (arguments[i].constructor === Array) {
             arguments[i][0](arguments[i].slice(1));
-        } else if (arguments[i].constructor === String) {
-            arguments[i]();
         } else {
-            console.error('Unknown parameter type: ' + arguments[i].constructor);
+            arguments[i]();
         }
     }
     console.info('Finished executing loaded page scripts');
