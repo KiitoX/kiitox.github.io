@@ -95,7 +95,7 @@ function expandToWindow() {
 function execAndClean() {
     "use strict";
     for (var i = 0; i < arguments.length; i++) {
-        //console.info('executing: "' + arguments[i].toString());
+        console.info('executing: "' + arguments[i]);
         if (arguments[i].constructor === Array) {
             arguments[i][0](arguments[i].slice(1));
         } else if (arguments[i].constructor === String) {
