@@ -164,8 +164,11 @@ function addCardHere(content_array) {
     switch (type) {
         case 'image'://custom -> title, link
             var title = content_array[array_next++], 
-                link = content_array[array_next++];
-            img.href = link;
+                link = content_array[array_next++],
+                a = document.createElement('a');
+            a.href = link;
+            a.appendChild(card);
+            cell.appendChild(a);
             //TODO:wip
             /* in card:
             <div class="mdl-card__title mdl-card--expand"></div>
@@ -207,11 +210,11 @@ function addCardHere(content_array) {
                 action_div.appendChild(action_a);
             }
             card.appendChild(action_div);
+            cell.appendChild(card);
             break;
         default:
             console.error('unknown type ' + type);
     }
-    cell.appendChild(card);
     parent.appendChild(cell);
     componentHandler.upgradeDom();
 }
