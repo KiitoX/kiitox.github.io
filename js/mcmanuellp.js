@@ -95,7 +95,6 @@ function expandToWindow() {
 function execAndClean() {
     "use strict";
     for (var i = 0; i < arguments.length; i++) {
-        console.info('executing: ' + arguments[i]);
         if (arguments[i] === undefined) {
             console.error('undefined function...')
         } else if (arguments[i].constructor === Array) {
@@ -165,6 +164,13 @@ function addCardHere(content_array) {
             supporting_div.className = 'mdl-card__supporting-text';
             supporting_div.innerHTML = supporting_text;
             array_next++;
+            cell.onresize = function f() {
+                var cell_height = cell.offsetHeight,
+                    card_height = card.offsetHeight,
+                    support_height = supporting_div.offsetHeight - 32 /*padding*/;
+                supporting_div.style.height = (support_height + cell_height - card_height) + "px";
+                alert(cell.offsetWidth + " : " + cell.offsetHeight);
+            };
             card.appendChild(supporting_div);
         case 'actions'://custom -> [action_name, action_link]...
             var action = content_array.slice(array_next),
