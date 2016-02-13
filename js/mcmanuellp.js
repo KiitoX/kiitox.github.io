@@ -168,18 +168,19 @@ function addCardHere(content_array) {
             break;
         case 'info'://custom -> supporting_text, [action_name, action_link]...
             var supporting_text = content_array[array_next],
-                supporting_div = document.createElement('div');
+                supporting_div = document.createElement('div'),
+                supporting_p = document.createElement('p');
             supporting_div.className = 'mdl-card__supporting-text';
-            supporting_div.innerHTML = supporting_text;
+            supporting_p.innerHTML = supporting_text;
             array_next++;
             resize_elements = resize_elements.concat(cell);
             cell.onresize = function f() {
                 var cell_height = cell.offsetHeight,
                     card_height = card.offsetHeight,
-                    support_height = supporting_div.offsetHeight - 32 /*padding*/;
-                supporting_div.style.height = (support_height + cell_height - card_height) + "px";
-                alert(cell.offsetWidth + " : " + cell.offsetHeight);
+                    support_height = supporting_p.offsetHeight;
+                supporting_p.style.height = (support_height + cell_height - card_height) + "px";
             };
+            supporting_div.appendChild(supporting_p);
             card.appendChild(supporting_div);
         case 'actions'://custom -> [action_name, action_link]...
             var action = content_array.slice(array_next),
