@@ -129,7 +129,7 @@ function setLink() {
     objXml.open('GET', './lyrics/js-bookmark-applet.js', true);
     objXml.send();
 }
-//[link, img_link, alt, type, custom..]
+//[img_link, alt, type, custom..]
 function addCardHere(content_array) {
     "use strict";
     var parent = document.getElementById(exec_img_id).parentElement,
