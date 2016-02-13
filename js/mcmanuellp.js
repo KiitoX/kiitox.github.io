@@ -171,10 +171,12 @@ function addCardHere(content_array) {
                 supporting_div = document.createElement('div'),
                 supporting_p = document.createElement('p');
             supporting_div.className = 'mdl-card__supporting-text';
+            supporting_p.style.margin = '0';
             supporting_p.innerHTML = supporting_text;
             array_next++;
             resize_elements = resize_elements.concat(cell);
             cell.onresize = function f() {
+                supporting_p.style.removeProperty('height');
                 var cell_height = cell.offsetHeight,
                     card_height = card.offsetHeight,
                     support_height = supporting_p.offsetHeight;
