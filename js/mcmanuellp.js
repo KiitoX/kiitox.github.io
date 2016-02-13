@@ -5,6 +5,8 @@ var tab_id_prefix = 't';
 
 var default_page = 'tab_home';
 
+var exec_img_id = 'exec_img';
+
 //sets loading progressbar progress or hides it
 function setLoading(progress) {
     "use strict";
@@ -61,6 +63,15 @@ function loadContent(id) {
     };
     objXml.open("GET", './pages/' + id + '.html', true);
     objXml.send();
+}
+//execute function and remove debug img
+function execAndClean() {
+    for (var i = 0; i < arguments.length; i++) {
+        arguments[i]();
+    }
+    console.log('finished executing loaded page script functions');
+    var img = document.getElementById(exec_img_id);
+    img.parentNode.removeChild(img);
 }
 //loads initial subpage and sets initial hash
 function startContent() {
