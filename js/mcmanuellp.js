@@ -98,13 +98,14 @@ function expandToWindow() {
     document.getElementById(content_id + '_').style.minHeight = minH + "px";
     document.getElementById(content_id + '_').style.marginBottom = document.getElementById("s2").offsetHeight + 8 + "px";
     document.getElementById("s2").style.width = minW - 32 + "px";
-    timeoutUnDoResize();
+    dispatchUnResize();
+    dispatchDoResize();
 }
 //displatch unresize event
 function dispatchUnResize() {
     for (var i = 0; i < resize_elements.length; i++) {
         console.log("unresize");
-        resize_elements[i].dispatchEvent(doresize);
+        resize_elements[i].dispatchEvent(unresize);
     }
 }
 //displatch doresize event
@@ -115,9 +116,8 @@ function dispatchDoResize() {
     }
 }
 //timed un & do resize
-function timeoutUnDoResize() {
-    setTimeout(dispatchUnResize, 1000); 
-    setTimeout(dispatchDoResize, 2000);
+function timeoutDoResize() {
+    setTimeout(dispatchDoResize, 1000);
 }
 //execute function and remove debug img
 function execAndClean() {
