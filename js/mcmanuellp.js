@@ -172,7 +172,7 @@ function addCardHere(content_array) {
             supporting_div.className = 'mdl-card__supporting-text';
             supporting_div.innerHTML = supporting_text;
             array_next++;
-            resize_elements.concat(cell);
+            resize_elements = resize_elements.concat(cell);
             cell.onresize = function f() {
                 var cell_height = cell.offsetHeight,
                     card_height = card.offsetHeight,
