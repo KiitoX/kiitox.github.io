@@ -8,6 +8,10 @@ var default_page = 'tab_home';
 var exec_img_id = 'exec_img';
 
 var resize_elements = [];
+var unresize = document.createEvent("UIEvents"),
+    doresize = document.createEvent("UIEvents");
+unresize.initEvent("unresize", false, false);
+doresize.initEvent("doresize", false, false);
 
 //sets loading progressbar progress or hides it
 function setLoading(progress) {
@@ -94,10 +98,6 @@ function expandToWindow() {
     document.getElementById(content_id + '_').style.minHeight = minH + "px";
     document.getElementById(content_id + '_').style.marginBottom = document.getElementById("s2").offsetHeight + 8 + "px";
     document.getElementById("s2").style.width = minW - 32 + "px";
-    var unresize = document.createEvent("UIEvents"),
-        doresize = document.createEvent("UIEvents");
-    unresize.initEvent("unresize", false, false);
-    doresize.initEvent("doresize", false, false);
     for (var i = 0; i < resize_elements.length; i++) {
         resize_elements[i].dispatchEvent(unresize);
     }
