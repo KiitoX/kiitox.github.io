@@ -5,53 +5,20 @@
 		I've included a number on a scale from 1 - 10 declaring how good I am at using each of the following languages in the title tag
 	</p>
     <div class="mdl-grid" style="padding:0;margin:-8px;">
-        <div class="mdl-cell mdl-cell--4-col">
-            <a href="https://en.wikipedia.org/wiki/Java_(programming_language)">
-                <div class="mdl-card mdl-shadow--2dp img-tile">
-                    <img src="./img/programming_logos/java.png"
-                    alt="Java" title="Java - 8">
-                </div>
-            </a>
-        </div>
-        <div class="mdl-cell mdl-cell--4-col">
-            <a href="https://en.wikipedia.org/wiki/Scala_(programming_language)">
-                <div class="mdl-card mdl-shadow--2dp img-tile">
-                    <img src="./img/programming_logos/scala.png"
-                    alt="Scala" title="Scala - 4">
-                </div>
-            </a>
-        </div>
-        <div class="mdl-cell mdl-cell--4-col">
-            <a href="https://en.wikipedia.org/wiki/C_(programming_language)">
-                <div class="mdl-card mdl-shadow--2dp img-tile">
-                    <img src="./img/programming_logos/c.png"
-                    alt="C" title="C - 2">
-                </div>
-            </a>
-        </div>
-        <div class="mdl-cell mdl-cell--4-col">
-            <a href="https://en.wikipedia.org/wiki/HTML">
-                <div class="mdl-card mdl-shadow--2dp img-tile">
-                    <img src="./img/programming_logos/html5.png" 
-                    alt="HTML 5" title="HTML 5 - 8">
-                </div>
-            </a>
-        </div>
-        <div class="mdl-cell mdl-cell--4-col">
-            <a href="https://en.wikipedia.org/wiki/JavaScript">
-                <div class="mdl-card mdl-shadow--2dp img-tile">
-                    <img src="./img/programming_logos/javascript.png"
-                    alt="JavaScript" title="JavaScript - 6">
-                </div>
-            </a>
-        </div>
-        <div class="mdl-cell mdl-cell--4-col">
-            <a href="https://en.wikipedia.org/wiki/Python_(programming_language)">
-                <div class="mdl-card mdl-shadow--2dp img-tile">
-                    <img src="./img/programming_logos/python.png"
-                    alt="Python" title="Python - 4">
-                </div>
-            </a>
-        </div>
+        <!-- [img_link, alt, "info", [action_name, action_link]..] -->
+        <img onload="execAndClean(
+                     [addCardHere, './img/programming_logos/java.png', 'Java', 
+                     'info', 'Java - 8', ['Wikipedia', 'https://en.wikipedia.org/wiki/Java_(programming_language)']],
+                     [addCardHere, './img/programming_logos/scala.png', 'Scala', 
+                     'info', 'Scala - 4', ['Wikipedia', 'https://en.wikipedia.org/wiki/Scala_(programming_language)']],
+                     [addCardHere, './img/programming_logos/c.png', 'C', 
+                     'info', 'C - 2', ['Wikipedia', 'https://en.wikipedia.org/wiki/C_(programming_language)']],
+                     [addCardHere, './img/programming_logos/html5.png', 'HTML5', 
+                     'info', 'HTML5 - 8', ['Wikipedia', 'https://en.wikipedia.org/wiki/HTML']],
+                     [addCardHere, './img/programming_logos/javascript.png', 'JavaScript', 
+                     'info', 'JavaScript - 6', ['Wikipedia', 'https://en.wikipedia.org/wiki/JavaScript']],
+                     [addCardHere, './img/programming_logos/python.png', 'Python', 
+                     'info', 'Python - 4', ['Wikipedia', 'https://en.wikipedia.org/wiki/Python_(programming_language)']]
+                     );" id="exec_img" src="../img/script_temp.png">
     </div>
 </div>
