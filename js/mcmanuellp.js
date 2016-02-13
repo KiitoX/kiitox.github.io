@@ -217,6 +217,7 @@ function addCardHere(content_array) {
     }
     parent.appendChild(cell);
     componentHandler.upgradeDom();
+    expandToWindow();
 }
 //checks webkit compatibility and displays notification
 function checkChromium() {
