@@ -98,26 +98,12 @@ function expandToWindow() {
     document.getElementById(content_id + '_').style.minHeight = minH + "px";
     document.getElementById(content_id + '_').style.marginBottom = document.getElementById("s2").offsetHeight + 8 + "px";
     document.getElementById("s2").style.width = minW - 32 + "px";
-    dispatchUnResize();
-    dispatchDoResize();
-}
-//displatch unresize event
-function dispatchUnResize() {
     for (var i = 0; i < resize_elements.length; i++) {
-        console.log("unresize");
         resize_elements[i].dispatchEvent(unresize);
     }
-}
-//displatch doresize event
-function dispatchDoResize() {
     for (var i = 0; i < resize_elements.length; i++) {
-        console.log("doresize");
         resize_elements[i].dispatchEvent(doresize);
     }
-}
-//timed un & do resize
-function timeoutDoResize() {
-    setTimeout(dispatchDoResize, 1000);
 }
 //execute function and remove debug img
 function execAndClean() {
@@ -199,6 +185,9 @@ function addCardHere(content_array) {
             supporting_p.style.lineHeight = '18px';
             supporting_p.innerHTML = supporting_text;
             resize_elements = resize_elements.concat(cell);
+            img.addEventListener("load", function () {
+                expandToWindow();
+            }, false);
             cell.addEventListener("unresize", function () {
                 supporting_p.style.removeProperty('height');
             }, false);
