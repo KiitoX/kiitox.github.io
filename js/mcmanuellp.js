@@ -99,9 +99,11 @@ function expandToWindow() {
     document.getElementById(content_id + '_').style.marginBottom = document.getElementById("s2").offsetHeight + 8 + "px";
     document.getElementById("s2").style.width = minW - 32 + "px";
     for (var i = 0; i < resize_elements.length; i++) {
+        console.log("unresize");
         resize_elements[i].dispatchEvent(unresize);
     }
     for (var i = 0; i < resize_elements.length; i++) {
+        console.log("doresize");
         resize_elements[i].dispatchEvent(doresize);
     }
 }
