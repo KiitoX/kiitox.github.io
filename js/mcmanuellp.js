@@ -95,6 +95,7 @@ function expandToWindow() {
 function execAndClean() {
     "use strict";
     for (var i = 0; i < arguments.length; i++) {
+        console.info('executing: "' + arguments[i].toString());
         if (arguments[i].constructor === Array) {
             arguments[i][0](arguments[i].slice(1));
         } else if (arguments[i].constructor === String) {
@@ -146,7 +147,7 @@ function addCardHere(content_array) {
     img.alt = img_alt;
     card.appendChild(img);
     switch (type) {
-        case "image"://custom -> title, link
+        case 'image'://custom -> title, link
             var title = content_array[array_next];
             //TODO:wip
             /* in card:
@@ -156,20 +157,20 @@ function addCardHere(content_array) {
             </div>
             */
             break;
-        case "info"://custom -> supporting_text, [action_name, action_link]...
+        case 'info'://custom -> supporting_text, [action_name, action_link]...
             var supporting_text = content_array[array_next],
                 supporting_div = document.createElement('div');
-            supporting_div.className = "mdl-card__supporting-text";
+            supporting_div.className = 'mdl-card__supporting-text';
             supporting_div.innerHTML = supporting_text;
             array_next++;
             card.appendChild(supporting_div);
-        case "actions"://custom -> [action_name, action_link]...
+        case 'actions'://custom -> [action_name, action_link]...
             var action = content_array.slice(array_next),
                 action_div = document.createElement('div');
-            action_div.className = "mdl-card__actions mdl-card--border";
+            action_div.className = 'mdl-card__actions mdl-card--border';
             for (var i = 0; i < action.length; i++) {
                 var action_a = document.createElement('a');
-                action_a.className = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect";
+                action_a.className = 'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect';
                 action_a.innerHTML = action[i][0];
                 action_a.href = action[i][1];
                 action_div.appendChild(action_a);
@@ -177,7 +178,7 @@ function addCardHere(content_array) {
             card.appendChild(action_div);
             break;
         default:
-            
+            console.error('unknown type ' + type);
     }
     cell.appendChild(card);
     parent.appendChild(cell);
