@@ -93,10 +93,15 @@ function expandToWindow() {
     document.getElementById(content_id + '_').style.minHeight = minH + "px";
     document.getElementById(content_id + '_').style.marginBottom = document.getElementById("s2").offsetHeight + 8 + "px";
     document.getElementById("s2").style.width = minW - 32 + "px";
-    var event = document.createEvent("UIEvents");
-    event.initEvent("resize", false, false);
+    var unresize = document.createEvent("UIEvents"),
+        resize = document.createEvent("UIEvents");
+    unresize.initEvent("unresize", false, false);
+    resize.initEvent("resize", false, false);
     for (var i = 0; i < resize_elements.length; i++) {
-        resize_elements[i].dispatchEvent(event);
+        resize_elements[i].dispatchEvent(unresize);
+    }
+    for (var i = 0; i < resize_elements.length; i++) {
+        resize_elements[i].dispatchEvent(resize);
     }
 }
 //execute function and remove debug img
@@ -175,8 +180,10 @@ function addCardHere(content_array) {
             supporting_p.innerHTML = supporting_text;
             array_next++;
             resize_elements = resize_elements.concat(cell);
-            cell.onresize = function f() {
+            cell.addEventListener("unresize", function () {
                 supporting_p.style.removeProperty('height');
+            }, false)
+            cell.onresize = function () {
                 var cell_height = cell.offsetHeight,
                     card_height = card.offsetHeight,
                     support_height = supporting_p.offsetHeight;
