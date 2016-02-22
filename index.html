@@ -115,7 +115,7 @@
 			</nav>
 		</div>
 
-		<main class="mdl-layout__content" id="swipeable1" style="background-color:lightsteelblue" onscroll="var header = document.getElementById('s1'), container = document.getElementById('swipeable1'); if(container.scrollTop > 0) {console.info('shadow'); remClass(header, 'no-shadow');} else {console.log('noshadow'); addClass(header, 'no-shadow');}">
+		<main class="mdl-layout__content" id="swipeable1" style="background-color:lightsteelblue" onscroll="var header = document.getElementById('s1'), container = document.getElementById('swipeable1'); if(container.scrollTop > 16) {remClass(header, 'no-shadow');} else {addClass(header, 'no-shadow');}">
 
 			<section class="mdl-layout__tab-panel is-active" id="home">
 				<div class="page-content" onwheel="var event_copy = new WheelEvent('wheel', {deltaX:event.deltaX, deltaY:event.deltaY, deltaZ:event.deltaZ, deltaMode:event.deltaMode}); document.getElementById('content').dispatchEvent(event_copy);">
