@@ -224,13 +224,13 @@ function addCardHere(content_array) {
 function checkChromium() {
     "use strict";
     if (!window.chrome) {
-        document.getElementById("noChrome").style.display = "block";
+        remClass(document.getElementById("noChrome"), "hidden");
     }
 }
 //hides webkit compatibility message
 function hideCMessage() {
     "use strict";
-    document.getElementById("noChrome").style.display = "none";
+    addClass(document.getElementById("noChrome"), "hidden");
 }
 //returns whether element has classList
 function hasClassList(element) {
@@ -351,7 +351,7 @@ function assemble() {
         url = 'https://mcmanuellp.github.io/',
         elements0, elements1, elements2, elements1save = [], elements2Save = [],
         i = 0;
-    document.querySelector('.mdl-layout__header-row > .mdl-navigation > .mdl-navigation__link').style.display = 'none';
+    addClass(document.querySelector('.mdl-layout__header-row > .mdl-navigation > .mdl-navigation__link'), 'hidden');
     document.getElementById('no_assemble').innerHTML = '';
     elements0 = document.getElementById('ttab').children;
     for (i = 0; i < elements0.length; i++) {
@@ -373,7 +373,7 @@ function assemble() {
     }
     pageHtml = '<!doctype html>\n' + document.documentElement.outerHTML;
     download(pageHtml, fileName, 'text/plain');
-    document.querySelector('.mdl-layout__header-row > .mdl-navigation > .mdl-navigation__link').style.display = 'block';
+    remClass(document.querySelector('.mdl-layout__header-row > .mdl-navigation > .mdl-navigation__link'), 'hidden');
     for (i = 0; i < elements0.length; i++) {
         elements0[i].setAttribute('href', '#home');
         elements0[i].setAttribute('onclick', 'goTo("' + elements0[i].getAttribute('id').substr(1) + '");');

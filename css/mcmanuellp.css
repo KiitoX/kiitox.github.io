@@ -2,11 +2,28 @@
 	width: auto;
 	min-height: 0px;
 }
-
 .img-tile img {
 	width: 100%;
 	min-height: 0px
 }
 .no-shadow {
 	box-shadow: none;
+}
+.hidden {
+	display: none;
+}
+.page-header {
+	font-weight: 300;
+	text-align: center;
+}
+.page-content {
+	margin: 5%;
+}
+.separator {
+	width: 90%;
+	margin: auto;
+}
+
+main {
+	background-color: lightsteelblue;
 }

@@ -53,12 +53,12 @@
 	</style>
 </head>
 <body onresize='expandToWindow();'>
-	<div style="display:none;">
+	<div class="hidden">
         <p>This is my Webpage, deal with it.</p>
     </div>
 
 	<div id="no_assemble"><script src="js/modular.js"></script></div>
-	<div style="background-color:lightPink;height:24px;width:100%;display:none;" id="noChrome">
+	<div class="hidden" style="background-color:lightPink;height:24px;width:100%;" id="noChrome">
         <meta name="robots">
 		<p style="vertical-align:middle;text-align:center;">
 			<i class="material-icons md-18" href="#" style="vertical-align:middle;text-align:center;" onclick='hideCMessage();' id="err">close</i>
@@ -81,7 +81,7 @@
 				<span class="mdl-layout-title">MCManuelLP</span>
 				<div class="mdl-layout-spacer"></div>
 				<nav class="mdl-navigation">
-					<a class="mdl-navigation__link" href="javascript:void(0);" onclick="assemble();" style="display:none;">
+					<a class="mdl-navigation__link hidden" href="javascript:void(0);" onclick="assemble();">
 						<i class="material-icons" id="assembly">build</i>
 					</a>
 					<div class="mdl-tooltip" for="assembly"><strong>Webpages, assemble!</strong></div>
@@ -106,16 +106,16 @@
 				<a class="mdl-navigation__link" onclick="noTabActive();goTo('programming');" href="#programming">Programming</a>
 				<a class="mdl-navigation__link" onclick="noTabActive();goTo('pcgames');" href="#pcgames">PC Games</a>
 				<a class="mdl-navigation__link" onclick="noTabActive();goTo('moviestv');" href="#moviestv">Movies &amp; TV</a>
-				<hr style="width:90%; margin:auto;">
+				<hr class="separator">
 				<a class="mdl-navigation__link" onclick="noTabActive();goTo('hardware');" href="#hardware">Hardware</a>
-				<hr style="width:90%; margin:auto;">
-				<a style="margin:5%" href="http://www.w3.org/html/logo/">
+				<hr class="separator">
+				<a class="page-content" href="http://www.w3.org/html/logo/">
 					<img src="http://www.w3.org/html/logo/badge/html5-badge-h-connectivity-css3-device-semantics.png" width="229" height="64" alt="HTML5 Powered with Connectivity / Realtime, CSS3 / Styling, Device Access, and Semantics" title="HTML5 Powered with Connectivity / Realtime, CSS3 / Styling, Device Access, and Semantics">
 				</a>
 			</nav>
 		</div>
 
-		<main class="mdl-layout__content" id="swipeable1" style="background-color:lightsteelblue" onscroll="var header = document.getElementById('s1'), container = document.getElementById('swipeable1'); if(container.scrollTop > 16) {remClass(header, 'no-shadow');} else {addClass(header, 'no-shadow');}">
+		<main class="mdl-layout__content" id="swipeable1" onscroll="var header = document.getElementById('s1'), container = document.getElementById('swipeable1'); if(container.scrollTop > 16) {remClass(header, 'no-shadow');} else {addClass(header, 'no-shadow');}">
 
 			<section class="mdl-layout__tab-panel is-active" id="home">
 				<div class="page-content" onwheel="var event_copy = new WheelEvent('wheel', {deltaX:event.deltaX, deltaY:event.deltaY, deltaZ:event.deltaZ, deltaMode:event.deltaMode}); document.getElementById('content').dispatchEvent(event_copy);">
@@ -123,10 +123,10 @@
 						<div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
 						<div class="mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col" style="position:relative;z-index:1;" id="content_">
 							<!-- Reference HTML -->
-							<div style="display:none;" id="_loading"><p style="text-align:center;color:gray;margin:20px;">Loading ...</p></div>
-							<div style="display:none;" id="_error"></div><!-- todo do? -->
+							<div class="hidden" id="_loading"><p style="text-align:center;color:gray;margin:20px;">Loading ...</p></div>
+							<div class="hidden" id="_error"></div><!-- todo do? -->
 							<!-- Loading progress bar. -->
-							<div style="height:4px;"><div class="mdl-progress mdl-js-progress" id="loading" style="width:100%;"></div></div>
+							<div style="height:4px;width:100%;"><div class="mdl-progress mdl-js-progress" id="loading"></div></div>
 							<!-- Content goes in here! -->
 							<div style="width:100%;height:100%;" id="content"></div>
 						</div>
