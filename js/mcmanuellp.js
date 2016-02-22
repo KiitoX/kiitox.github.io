@@ -161,7 +161,7 @@ function addCardHere(content_array) {
     card.appendChild(img);
     switch (type) {
         case 'image'://custom -> title, link
-            var title = content_array[array_next++], 
+            var title = content_array[array_next++],
                 link = content_array[array_next++],
                 a = document.createElement('a');
             a.href = link;
@@ -232,6 +232,65 @@ function hideCMessage() {
     "use strict";
     document.getElementById("noChrome").style.display = "none";
 }
+//returns whether element has classList
+function hasClassList(element) {
+	return element.classList;
+}
+//checks if classList of element contains name
+function chkClass(element, name) {
+	return element.classList.contains(name);
+}
+//safe add class to classList of element
+function addClass(element, name) {
+	if (hasClassList(element) && !chkClass(element, name)) {
+		element.classList.add(name);
+	}
+}
+//safe remove class to classList of element
+function remClass(element, name) {
+	if (hasClassList(element) && chkClass(element, name)) {
+		element.classList.remove(name);
+	}
+}
+//Returns true if it is a DOM node
+function isNode(o){
+    return (
+        typeof Node === "object" ? o instanceof Node :
+        o && typeof o === "object" && typeof o.nodeType === "number" && typeof o.nodeName==="string"
+    );
+}
+//Returns true if it is a DOM element
+function isElement(o){
+    return (
+        typeof HTMLElement === "object" ? o instanceof HTMLElement : //DOM2
+        o && typeof o === "object" && o !== null && o.nodeType === 1 && typeof o.nodeName==="string"
+    );
+}
+var UID_prefix = "_UID_",
+    UID = 0;
+//[header, [entry, tooltip]..], dom_table_node
+function createTable(array_data) {
+    "use strict";
+    var header = array_data[0];
+    addOrInsert(header, null);
+    for (var i = 1; i < array_data.length; i++) {
+        if (array_data[i].constructor === Array) {
+            alert(array_data[i].length + " long array: " + array_data[i]);
+        } else if (array_data[i].constructor === String) {
+            alert("String: " + array_data[i]);
+        } else {
+            alert(array_data[i].constructor);
+        }
+    }
+}
+//handle different params properly
+function addOrInsert(element, dom_node) {
+    if(element.constructor === String) {
+        dom_node.innerHtml = element;
+    } else if(isElement(element) && isNode(dom_node)) {
+        dom_node.appendChild(element);
+    }
+}
 //adds swipe to open/close drawer to element
 function addDrawerSwipe(element, bool) {
     "use strict";
@@ -243,13 +302,13 @@ function addDrawerSwipe(element, bool) {
         allowedTime = 200, // max time allowed to travel that distance
         elapsedTime,
         startTime;
-    
+
     function handleswipe(isrightswipe) {
         if (isrightswipe) {
             setDrawer(bool);
         }
     }
-    
+
     element.addEventListener('touchstart', function (e) {
         var touchobj = e.changedTouches[0];
         dist = 0;
@@ -257,7 +316,7 @@ function addDrawerSwipe(element, bool) {
         startY = touchobj.pageY;
         startTime = new Date().getTime();
     }, false);
-    
+
     element.addEventListener('touchend', function (e) {
         var touchobj = e.changedTouches[0],
             swiperightBol = false;
@@ -276,6 +335,7 @@ function addDrawerSwipe(element, bool) {
 }
 //lib function to save text
 function download(text, name, type) {
+
     "use strict";
     var a = document.createElement("a"),
         file = new Blob([text], {type: type});
